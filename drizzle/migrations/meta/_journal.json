@@ -15,6 +15,13 @@
       "when": 1789762302638,
       "tag": "0001_allow_authenticated_content_admins",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789762352510,
+      "tag": "0002_secure_content_media_and_remove_broad_access",
+      "breakpoints": true
     }
   ]
 }
