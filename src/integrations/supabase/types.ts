@@ -14,16 +14,299 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      articles: {
+        Row: {
+          author_id: string | null
+          category_id: string | null
+          content: string
+          cover_image_url: string | null
+          created_at: string
+          excerpt: string
+          featured: boolean
+          id: string
+          published_at: string | null
+          reading_minutes: number
+          scheduled_for: string | null
+          seo_description: string
+          seo_title: string
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          category_id?: string | null
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string
+          featured?: boolean
+          id?: string
+          published_at?: string | null
+          reading_minutes?: number
+          scheduled_for?: string | null
+          seo_description?: string
+          seo_title?: string
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          category_id?: string | null
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string
+          featured?: boolean
+          id?: string
+          published_at?: string | null
+          reading_minutes?: number
+          scheduled_for?: string | null
+          seo_description?: string
+          seo_title?: string
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "articles_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      categories: {
+        Row: {
+          active: boolean
+          created_at: string
+          description: string
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          active: boolean
+          answer: string
+          created_at: string
+          id: string
+          question: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          answer: string
+          created_at?: string
+          id?: string
+          question: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          answer?: string
+          created_at?: string
+          id?: string
+          question?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      programs: {
+        Row: {
+          active: boolean
+          body: string
+          created_at: string
+          id: string
+          schedule_text: string
+          slug: string
+          sort_order: number
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          body?: string
+          created_at?: string
+          id?: string
+          schedule_text?: string
+          slug: string
+          sort_order?: number
+          summary?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          body?: string
+          created_at?: string
+          id?: string
+          schedule_text?: string
+          slug?: string
+          sort_order?: number
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          active: boolean
+          body: string
+          created_at: string
+          icon: string
+          id: string
+          slug: string
+          sort_order: number
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          body?: string
+          created_at?: string
+          icon?: string
+          id?: string
+          slug: string
+          sort_order?: number
+          summary?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          body?: string
+          created_at?: string
+          icon?: string
+          id?: string
+          slug?: string
+          sort_order?: number
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          active: boolean
+          attribution: string
+          consent_confirmed: boolean
+          context: string
+          created_at: string
+          id: string
+          quote: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          attribution?: string
+          consent_confirmed?: boolean
+          context?: string
+          created_at?: string
+          id?: string
+          quote: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          attribution?: string
+          consent_confirmed?: boolean
+          context?: string
+          created_at?: string
+          id?: string
+          quote?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +433,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+    },
   },
 } as const
