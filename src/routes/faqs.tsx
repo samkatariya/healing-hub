@@ -1,0 +1,7 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { PageIntro } from "@/components/site-shell";
+import { Accordion,AccordionContent,AccordionItem,AccordionTrigger } from "@/components/ui/accordion";
+import { publicContentOptions } from "@/lib/content.queries";
+export const Route=createFileRoute("/faqs")({loader:({context})=>context.queryClient.ensureQueryData(publicContentOptions),head:()=>({meta:[{title:"Frequently Asked Questions — Healing Emotions"},{name:"description",content:"Answers about beginning therapy, confidentiality, online sessions and what to expect."},{property:"og:title",content:"FAQs — Healing Emotions"},{property:"og:description",content:"Clear answers before you take your first step."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary"}]}),component:FaqPage});
+function FaqPage(){const{data}=useSuspenseQuery(publicContentOptions);return <><PageIntro eyebrow="Before we begin" title="Questions are welcome" description="A few clear answers about reaching out and what comes next."/><section className="py-20"><Accordion type="single" collapsible className="mx-auto max-w-3xl px-5">{data.faqs.map((f,i)=><AccordionItem key={f.id} value={f.id}><AccordionTrigger className="py-6 text-left text-base"><span className="mr-5 text-primary">0{i+1}</span>{f.question}</AccordionTrigger><AccordionContent className="pb-6 pl-10 leading-7 text-muted-foreground">{f.answer}</AccordionContent></AccordionItem>)}</Accordion></section></>}
