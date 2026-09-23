@@ -3,7 +3,8 @@
 // Swapping to a self-hosted backend means writing a new implementation of
 // ContentRepository / AdminContentRepository — no page or component changes.
 
-export type Row = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Row = any;
 
 export type PublicContent = {
   services: Row[];
