@@ -17,11 +17,16 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as FeesRouteImport } from './routes/fees'
+import { Route as FirstSessionRouteImport } from './routes/first-session'
+import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfessionalsRouteImport } from './routes/professionals'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as WhatBringsYouHereRouteImport } from './routes/what-brings-you-here'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated.admin'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -64,9 +69,29 @@ const FaqsRoute = FaqsRouteImport.update({
   path: '/faqs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeesRoute = FeesRouteImport.update({
+  id: '/fees',
+  path: '/fees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirstSessionRoute = FirstSessionRouteImport.update({
+  id: '/first-session',
+  path: '/first-session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsRoute = LocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfessionalsRoute = ProfessionalsRouteImport.update({
+  id: '/professionals',
+  path: '/professionals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -89,6 +114,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
   path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatBringsYouHereRoute = WhatBringsYouHereRouteImport.update({
+  id: '/what-brings-you-here',
+  path: '/what-brings-you-here',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -108,11 +138,16 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
+  '/fees': typeof FeesRoute
+  '/first-session': typeof FirstSessionRoute
+  '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
+  '/professionals': typeof ProfessionalsRoute
   '/programs': typeof ProgramsRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
+  '/what-brings-you-here': typeof WhatBringsYouHereRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -124,11 +159,16 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
+  '/fees': typeof FeesRoute
+  '/first-session': typeof FirstSessionRoute
+  '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
+  '/professionals': typeof ProfessionalsRoute
   '/programs': typeof ProgramsRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
+  '/what-brings-you-here': typeof WhatBringsYouHereRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -142,11 +182,16 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
+  '/fees': typeof FeesRoute
+  '/first-session': typeof FirstSessionRoute
+  '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
+  '/professionals': typeof ProfessionalsRoute
   '/programs': typeof ProgramsRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
+  '/what-brings-you-here': typeof WhatBringsYouHereRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -160,11 +205,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/disclaimer'
     | '/faqs'
+    | '/fees'
+    | '/first-session'
+    | '/locations'
     | '/privacy'
+    | '/professionals'
     | '/programs'
     | '/services'
     | '/terms'
     | '/testimonials'
+    | '/what-brings-you-here'
     | '/admin'
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -176,11 +226,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/disclaimer'
     | '/faqs'
+    | '/fees'
+    | '/first-session'
+    | '/locations'
     | '/privacy'
+    | '/professionals'
     | '/programs'
     | '/services'
     | '/terms'
     | '/testimonials'
+    | '/what-brings-you-here'
     | '/admin'
     | '/blog/$slug'
   id:
@@ -193,11 +248,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/disclaimer'
     | '/faqs'
+    | '/fees'
+    | '/first-session'
+    | '/locations'
     | '/privacy'
+    | '/professionals'
     | '/programs'
     | '/services'
     | '/terms'
     | '/testimonials'
+    | '/what-brings-you-here'
     | '/_authenticated/admin'
     | '/blog/$slug'
   fileRoutesById: FileRoutesById
@@ -211,11 +271,16 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
   FaqsRoute: typeof FaqsRoute
+  FeesRoute: typeof FeesRoute
+  FirstSessionRoute: typeof FirstSessionRoute
+  LocationsRoute: typeof LocationsRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProfessionalsRoute: typeof ProfessionalsRoute
   ProgramsRoute: typeof ProgramsRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
+  WhatBringsYouHereRoute: typeof WhatBringsYouHereRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -276,11 +341,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fees': {
+      id: '/fees'
+      path: '/fees'
+      fullPath: '/fees'
+      preLoaderRoute: typeof FeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/first-session': {
+      id: '/first-session'
+      path: '/first-session'
+      fullPath: '/first-session'
+      preLoaderRoute: typeof FirstSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations': {
+      id: '/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof LocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/professionals': {
+      id: '/professionals'
+      path: '/professionals'
+      fullPath: '/professionals'
+      preLoaderRoute: typeof ProfessionalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -309,6 +402,13 @@ declare module '@tanstack/react-router' {
       path: '/testimonials'
       fullPath: '/testimonials'
       preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-brings-you-here': {
+      id: '/what-brings-you-here'
+      path: '/what-brings-you-here'
+      fullPath: '/what-brings-you-here'
+      preLoaderRoute: typeof WhatBringsYouHereRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -358,11 +458,16 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
   FaqsRoute: FaqsRoute,
+  FeesRoute: FeesRoute,
+  FirstSessionRoute: FirstSessionRoute,
+  LocationsRoute: LocationsRoute,
   PrivacyRoute: PrivacyRoute,
+  ProfessionalsRoute: ProfessionalsRoute,
   ProgramsRoute: ProgramsRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
+  WhatBringsYouHereRoute: WhatBringsYouHereRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
