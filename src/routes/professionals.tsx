@@ -1,106 +1,22 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { User, MapPin, CalendarCheck2, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { PageIntro } from "@/components/site-shell";
-import { Button } from "@/components/ui/button";
 import { professionalsList } from "@/lib/site-data";
-import { BookingModal } from "@/components/booking-modal";
 
 export const Route = createFileRoute("/professionals")({
-  head: () => ({
-    meta: [
-      { title: "Our Professionals & Specialists — Healing Emotions" },
-      { name: "description", content: "Meet the multidisciplinary team at Healing Emotions: psychologists, psychotherapists, child therapists, speech, OT, art, music, dance and reminiscence therapists." },
-      { property: "og:title", content: "Our Professionals — Healing Emotions" },
-      { property: "og:description", content: "One roof. Multiple licensed disciplines and specialised approaches." },
-    ],
-  }),
-  component: ProfessionalsPage,
+  head: () => ({ meta: [
+    { title: "Our Professionals — Healing Emotions" }, { name: "description", content: "Learn about Healing Emotions founder Yash Daga and the areas of professional support available." },
+    { property: "og:title", content: "Our Professionals — Healing Emotions" }, { property: "og:description", content: "Meet our founder and explore available specialties." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
+  ] }), component: ProfessionalsPage,
 });
 
 function ProfessionalsPage() {
-  const [bookingOpen, setBookingOpen] = useState(false);
-  const [selectedSupport, setSelectedSupport] = useState<string>("");
-
-  const handleBookWithRole = (role: string) => {
-    setSelectedSupport(role);
-    setBookingOpen(true);
-  };
-
-  return (
-    <>
-      <PageIntro
-        eyebrow="Multidisciplinary Team"
-        title="Meet Our Professionals"
-        description="Healing Emotions unites accredited professionals from diverse psychological and allied therapeutic disciplines under one roof."
-      />
-
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-5 lg:px-8 space-y-16">
-          <div className="grid gap-x-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
-            {professionalsList.map((p) => (
-              <div key={p.role} className={`flex flex-col border-t pt-6 group ${p.confirmed ? 'border-primary/50' : 'border-border/60'}`}>
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">
-                      {p.role}
-                    </span>
-                    {p.confirmed && (
-                      <span className="text-[11px] font-semibold uppercase text-earth/80 tracking-wider">
-                        Founder
-                      </span>
-                    )}
-                  </div>
-
-                  <h2 className="mt-3 font-serif text-2xl text-earth">{p.name}</h2>
-                  <p className="mt-1 text-sm font-medium text-primary">{p.specialisation}</p>
-                  <p className="mt-4 text-sm leading-6 text-muted-foreground">{p.bio}</p>
-
-                  <div className="mt-5 pt-4 border-t border-border/40 flex items-start gap-1.5 text-sm text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                    <span>{p.locations}</span>
-                  </div>
-                </div>
-
-                <div className="mt-8 flex-1 flex items-end">
-                  <button
-                    onClick={() => handleBookWithRole(p.role)}
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center"
-                  >
-                    Book Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <div className="max-w-2xl">
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Unsure who to see?
-              </span>
-              <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">Need Help Selecting the Right Specialist?</h3>
-              <p className="mt-4 text-base leading-7 text-muted-foreground">
-                During the initial consultation, our clinical team evaluates your personal or family needs and connects you directly with the appropriate discipline.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
-              <button
-                onClick={() => setBookingOpen(true)}
-                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
-              >
-                Book an Initial Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <BookingModal
-        open={bookingOpen}
-        onOpenChange={setBookingOpen}
-        defaultSupport={selectedSupport}
-      />
-    </>
-  );
+  const founder = professionalsList.find((p) => p.confirmed);
+  const specialties = professionalsList.filter((p) => !p.confirmed);
+  return <><PageIntro eyebrow="People & specialties" title="Our professionals" description="Get to know our founder and the kinds of professional support you can ask about." />
+    <section className="py-16 sm:py-24"><div className="mx-auto max-w-5xl px-5 lg:px-8">
+      {founder && <div className="border-t border-border pt-7"><p className="text-sm font-medium text-primary">Founder</p><h2 className="mt-2 font-serif text-3xl text-earth">{founder.name}</h2><p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">{founder.bio}</p></div>}
+      <h2 className="mt-16 font-serif text-2xl text-earth">Areas of support</h2><div className="mt-7 grid gap-x-12 sm:grid-cols-2">{specialties.map((p) => <div key={p.role} className="border-t border-border py-6"><h3 className="font-serif text-xl text-earth">{p.role}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{p.specialisation}</p></div>)}</div>
+      <Link to="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">Ask about availability <ArrowRight className="h-4 w-4" /></Link>
+    </div></section></>;
 }
