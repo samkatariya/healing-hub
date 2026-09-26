@@ -56,42 +56,42 @@ function FirstSessionPage() {
       />
 
       <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto max-w-5xl px-5 lg:px-8 space-y-16">
+          <div className="grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s) => {
               const Icon = s.icon;
               return (
-                <div
-                  key={s.num}
-                  className="rounded-2xl border border-border bg-card p-6 shadow-xs flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="font-serif text-3xl font-bold text-primary/40">{s.num}</span>
-                    <div className="mt-4 flex items-center gap-2">
-                      <Icon className="h-5 w-5 text-primary" />
-                      <h2 className="font-serif text-xl font-semibold text-earth">{s.title}</h2>
-                    </div>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{s.desc}</p>
+                <div key={s.num} className="border-t border-border/60 pt-6">
+                  <span className="font-serif text-3xl font-bold text-primary/30">{s.num}</span>
+                  <div className="mt-4 flex items-center gap-2">
+                    <Icon className="h-5 w-5 text-primary" />
+                    <h2 className="font-serif text-xl text-earth">{s.title}</h2>
                   </div>
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground">{s.desc}</p>
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-16 rounded-3xl bg-sage-soft p-8 text-center sm:p-14 border border-border/60">
-            <span className="inline-block rounded-full bg-background px-4 py-1 text-xs font-semibold text-primary">
-              Take the first step
-            </span>
-            <h2 className="mt-4 font-serif text-3xl text-earth sm:text-4xl">
-              You don’t need to have everything figured out before your first session.
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground">
-              Most people feel nervous before their first appointment. We are here to make it as gentle and straightforward as possible.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <Button size="lg" className="rounded-full px-8 shadow-sm" onClick={() => setBookingOpen(true)}>
-                <CalendarCheck2 className="h-5 w-5 mr-2" /> Book a Session
-              </Button>
+          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Take the first step
+              </span>
+              <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
+                You don’t need to have everything figured out before your first session.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                Most people feel nervous before their first appointment. We are here to make it as gentle and straightforward as possible.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
+              <button
+                onClick={() => setBookingOpen(true)}
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+              >
+                Book a Session <ArrowRight className="h-4 w-4 ml-1.5" />
+              </button>
             </div>
           </div>
         </div>

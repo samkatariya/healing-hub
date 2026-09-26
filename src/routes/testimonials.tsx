@@ -76,48 +76,47 @@ function TestimonialsPage() {
       />
 
       <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8 space-y-12">
+        <div className="mx-auto max-w-5xl px-5 lg:px-8 space-y-20">
           {/* HEADER ACTION BAR */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-xs">
-            <div>
-              <h2 className="font-serif text-2xl text-earth">Have you attended a session?</h2>
-              <p className="text-xs text-muted-foreground mt-0.5">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-border/60 pb-8">
+            <div className="max-w-xl">
+              <h2 className="font-serif text-3xl text-earth">Have you attended a session?</h2>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
                 Your feedback helps us continuously improve our multidisciplinary care.
               </p>
             </div>
-            <div className="flex flex-wrap gap-2.5">
-              <Button size="sm" onClick={() => setFeedbackOpen(true)} className="rounded-full">
-                <MessageSquarePlus className="h-4 w-4 mr-1.5" /> Share Your Experience
-              </Button>
-              <Button asChild size="sm" variant="outline" className="rounded-full">
-                <a href="https://maps.google.com/?q=Healing+Emotions+Pune" target="_blank" rel="noreferrer">
-                  Read Google Reviews <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
-                </a>
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <button
+                onClick={() => setFeedbackOpen(true)}
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+              >
+                Share Experience <ArrowRight className="h-4 w-4 ml-1.5" />
+              </button>
+              <a href="https://maps.google.com/?q=Healing+Emotions+Pune" target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
+                Google Reviews <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
+              </a>
             </div>
           </div>
 
           {/* REVIEWS GRID */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
             {displayList.map((t, idx) => (
               <blockquote
                 key={t.id || idx}
-                className="flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-xs"
+                className="flex flex-col"
               >
-                <div>
-                  <div className="flex text-amber-500 mb-3 gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                  <p className="font-serif text-lg leading-relaxed text-earth">
-                    “{t.quote}”
-                  </p>
+                <div className="flex text-amber-500 mb-4 gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-current" />
+                  ))}
                 </div>
-                <footer className="mt-6 pt-4 border-t border-border/60">
-                  <div className="font-medium text-xs text-earth">{t.attribution}</div>
+                <p className="font-serif text-lg leading-relaxed text-earth">
+                  “{t.quote}”
+                </p>
+                <footer className="mt-8 pt-4 border-t border-border/60">
+                  <div className="font-medium text-sm text-earth">{t.attribution}</div>
                   {t.context && (
-                    <div className="text-[11px] text-muted-foreground mt-0.5">{t.context}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{t.context}</div>
                   )}
                 </footer>
               </blockquote>
@@ -125,11 +124,16 @@ function TestimonialsPage() {
           </div>
 
           {/* POLICY CALLOUT */}
-          <div className="rounded-2xl bg-sage-soft/60 p-6 sm:p-8 text-center border border-border/60">
-            <h3 className="font-serif text-xl text-earth">Confidentiality & Review Integrity</h3>
-            <p className="mx-auto mt-2 max-w-xl text-xs leading-6 text-muted-foreground">
-              We never fabricate reviews or incentivize testimonials. Every quote on this site is voluntarily contributed by clients with written permission. Names may be kept anonymous to protect client privacy.
-            </p>
+          <div className="border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Trust & Integrity
+              </span>
+              <h3 className="mt-4 font-serif text-2xl text-earth leading-[1.1]">Confidentiality & Review Integrity</h3>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                We never fabricate reviews or incentivize testimonials. Every quote on this site is voluntarily contributed by clients with written permission. Names may be kept anonymous to protect client privacy.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -36,18 +36,13 @@ function ProfessionalsPage() {
       />
 
       <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8 space-y-16">
+          <div className="grid gap-x-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
             {professionalsList.map((p) => (
-              <div
-                key={p.role}
-                className={`flex flex-col justify-between rounded-2xl border p-6 shadow-xs transition-all ${
-                  p.confirmed ? "border-primary/50 bg-sage-soft/30 ring-1 ring-primary/20" : "border-border bg-card"
-                }`}
-              >
+              <div key={p.role} className={`flex flex-col border-t pt-6 group ${p.confirmed ? 'border-primary/50' : 'border-border/60'}`}>
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="inline-block rounded-full bg-sage-soft px-3 py-1 text-xs font-semibold text-primary">
+                    <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">
                       {p.role}
                     </span>
                     {p.confirmed && (
@@ -57,39 +52,45 @@ function ProfessionalsPage() {
                     )}
                   </div>
 
-                  <h2 className="mt-4 font-serif text-2xl text-earth">{p.name}</h2>
-                  <p className="mt-1 text-xs font-medium text-primary">{p.specialisation}</p>
+                  <h2 className="mt-3 font-serif text-2xl text-earth">{p.name}</h2>
+                  <p className="mt-1 text-sm font-medium text-primary">{p.specialisation}</p>
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground">{p.bio}</p>
 
-                  <p className="mt-4 text-xs leading-5 text-muted-foreground">{p.bio}</p>
-
-                  <div className="mt-4 pt-3 border-t border-border/60 flex items-start gap-1.5 text-xs text-muted-foreground">
-                    <MapPin className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
+                  <div className="mt-5 pt-4 border-t border-border/40 flex items-start gap-1.5 text-sm text-muted-foreground">
+                    <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <span>{p.locations}</span>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-border/60">
-                  <Button
-                    size="sm"
-                    className="w-full rounded-full text-xs"
+                <div className="mt-8 flex-1 flex items-end">
+                  <button
                     onClick={() => handleBookWithRole(p.role)}
+                    className="text-sm font-medium hover:text-primary transition-colors flex items-center"
                   >
-                    <CalendarCheck2 className="h-3.5 w-3.5 mr-1" /> Book Consultation
-                  </Button>
+                    Book Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-14 rounded-2xl bg-sage-soft/60 p-8 text-center sm:p-12 border border-border/60">
-            <h3 className="font-serif text-2xl sm:text-3xl text-earth">Need Help Selecting the Right Specialist?</h3>
-            <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-              During the initial consultation, our clinical team evaluates your personal or family needs and connects you directly with the appropriate discipline.
-            </p>
-            <div className="mt-6 flex justify-center">
-              <Button size="lg" className="rounded-full px-8 shadow-sm" onClick={() => setBookingOpen(true)}>
-                Book an Initial Consultation
-              </Button>
+          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Unsure who to see?
+              </span>
+              <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">Need Help Selecting the Right Specialist?</h3>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                During the initial consultation, our clinical team evaluates your personal or family needs and connects you directly with the appropriate discipline.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
+              <button
+                onClick={() => setBookingOpen(true)}
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+              >
+                Book an Initial Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
+              </button>
             </div>
           </div>
         </div>

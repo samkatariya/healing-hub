@@ -36,76 +36,70 @@ function LocationsPage() {
       />
 
       <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8 space-y-16">
+          <div className="grid gap-x-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
             {hospitalLocations.map((loc) => (
-              <div
-                key={loc.id}
-                className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-xs hover:border-primary/60 hover:shadow-md transition-all"
-              >
+              <div key={loc.id} className="flex flex-col border-t border-border/60 pt-6 group">
                 <div>
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-primary">
-                    <MapPin className="h-3.5 w-3.5" />
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-primary">
+                    <MapPin className="h-3 w-3" />
                     <span>{loc.area}</span>
                   </div>
-                  <h2 className="mt-3 font-serif text-2xl text-earth">{loc.name}</h2>
+                  <h2 className="mt-3 font-serif text-2xl text-earth group-hover:text-primary transition-colors">{loc.name}</h2>
 
-                  <div className="mt-4 pt-4 border-t border-border/70 space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Available Support at this Centre:
+                  <div className="mt-4 space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                      Available Support:
                     </p>
-                    <ul className="space-y-1 text-xs text-foreground/80">
-                      {loc.services.map((svc) => (
-                        <li key={svc} className="flex items-center gap-1.5">
-                          <Check className="h-3 w-3 text-primary shrink-0" />
-                          <span>{svc}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-sm leading-6 text-muted-foreground">
+                      {loc.services.join(" · ")}
+                    </p>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-border/70 space-y-2">
-                  <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      className="flex-1 rounded-full text-xs"
+                <div className="mt-8 flex flex-col gap-3">
+                  <div className="flex items-center gap-4">
+                    <button
                       onClick={() => handleBookLocation(loc.name)}
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center"
                     >
-                      <CalendarCheck2 className="h-3.5 w-3.5 mr-1" /> Book Here
-                    </Button>
-                    <Button asChild size="sm" variant="outline" className="rounded-full text-xs">
-                      <a href={loc.mapsUrl} target="_blank" rel="noreferrer" aria-label="Google Maps directions">
-                        <ExternalLink className="h-3.5 w-3.5 mr-1" /> Maps
-                      </a>
-                    </Button>
-                  </div>
-                  <Button asChild size="sm" variant="ghost" className="w-full text-xs text-muted-foreground justify-center">
-                    <a href={`tel:${loc.phone}`}>
-                      <Phone className="h-3.5 w-3.5 mr-1.5 text-primary" /> Hospital Desk: {loc.phone}
+                      Book at this location
+                    </button>
+                    <span className="text-border">|</span>
+                    <a href={loc.mapsUrl} target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
+                      Directions <ExternalLink className="h-3.5 w-3.5 ml-1" />
                     </a>
-                  </Button>
+                  </div>
+                  <a href={`tel:${loc.phone}`} className="text-sm hover:text-primary transition-colors flex items-center text-muted-foreground">
+                    <Phone className="h-3.5 w-3.5 mr-1.5 text-primary" /> Desk: {loc.phone}
+                  </a>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-14 rounded-2xl border border-border bg-sage-soft/60 p-8 text-center sm:p-10">
-            <h3 className="font-serif text-2xl sm:text-3xl text-earth">Need Online Consultation Instead?</h3>
-            <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-              If travelling is difficult or you are located outside Pune, secure online video consultations are available with the same multidisciplinary specialists.
-            </p>
-            <div className="mt-5 flex justify-center">
-              <Button
-                size="lg"
-                className="rounded-full"
+          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Online Access
+              </span>
+              <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
+                Need Online Consultation Instead?
+              </h3>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                If travelling is difficult or you are located outside Pune, secure online video consultations are available with the same multidisciplinary specialists.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
+              <button
                 onClick={() => {
                   setSelectedLoc("Online Consultation");
                   setBookingOpen(true);
                 }}
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
               >
-                Book Online Consultation
-              </Button>
+                Book Online Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
+              </button>
             </div>
           </div>
         </div>

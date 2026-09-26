@@ -54,12 +54,8 @@ function AboutPage() {
             <img
               src={therapistPortrait}
               alt="Psy. Yash Daga, Founder of Healing Emotions"
-              className="aspect-[4/5] w-full rounded-2xl object-cover shadow-sm"
+              className="aspect-[4/5] w-full rounded-2xl object-cover"
             />
-            <div className="absolute -bottom-4 -right-4 hidden sm:block rounded-xl border border-border bg-card p-4 shadow-md">
-              <span className="text-xs font-semibold text-primary">Multidisciplinary Practice</span>
-              <p className="font-serif text-lg font-semibold text-earth">8 Partner Hospital Centres</p>
-            </div>
           </div>
 
           <div>
@@ -93,51 +89,51 @@ function AboutPage() {
               ))}
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="rounded-full shadow-xs">
-                <Link to="/professionals">
-                  Meet Our Professionals <ArrowRight className="h-4 w-4 ml-1.5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="rounded-full" onClick={() => setBookingOpen(true)}>
-                <CalendarCheck2 className="h-4 w-4 mr-2" /> Book a Consultation
-              </Button>
+            <div className="mt-12 flex flex-wrap items-center gap-6">
+              <Link to="/professionals" className="text-sm font-medium hover:text-primary transition-colors flex items-center">
+                Meet Our Professionals <ArrowRight className="h-4 w-4 ml-1.5" />
+              </Link>
+              <button onClick={() => setBookingOpen(true)} className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
+                <CalendarCheck2 className="h-4 w-4 mr-1.5" /> Book a Consultation
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* WHY ONE ROOF */}
-      <section className="bg-sage-soft py-16 sm:py-24 border-t border-border/60">
+      <section className="py-16 sm:py-24 border-t border-border/60">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
           <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">The Healing Emotions Standard</p>
-            <h3 className="mt-2 font-serif text-3xl sm:text-4xl text-earth">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+              The Healing Emotions Standard
+            </span>
+            <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
               Designed for ease, trust, and continuity
             </h3>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl bg-card p-6 border border-border">
-              <Users className="h-6 w-6 text-primary" />
-              <h4 className="mt-4 font-serif text-xl font-semibold text-earth">Allied Disciplines</h4>
-              <p className="mt-2 text-xs leading-6 text-muted-foreground">
+          <div className="mt-16 grid gap-x-12 gap-y-16 md:grid-cols-3">
+            <div className="border-t border-border/60 pt-6">
+              <Users className="h-5 w-5 text-primary" />
+              <h4 className="mt-4 font-serif text-xl text-earth">Allied Disciplines</h4>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Psychotherapy, Speech, OT, and expressive therapies working in sync rather than in silos.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-card p-6 border border-border">
-              <ShieldCheck className="h-6 w-6 text-primary" />
-              <h4 className="mt-4 font-serif text-xl font-semibold text-earth">Hospital Integration</h4>
-              <p className="mt-2 text-xs leading-6 text-muted-foreground">
+            <div className="border-t border-border/60 pt-6">
+              <ShieldCheck className="h-5 w-5 text-primary" />
+              <h4 className="mt-4 font-serif text-xl text-earth">Hospital Integration</h4>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Centres inside recognized hospitals provide safety, institutional credibility, and geographic reach.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-card p-6 border border-border">
-              <Heart className="h-6 w-6 text-primary" />
-              <h4 className="mt-4 font-serif text-xl font-semibold text-earth">Low-Friction Care</h4>
-              <p className="mt-2 text-xs leading-6 text-muted-foreground">
+            <div className="border-t border-border/60 pt-6">
+              <Heart className="h-5 w-5 text-primary" />
+              <h4 className="mt-4 font-serif text-xl text-earth">Low-Friction Care</h4>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 No complex diagnostic tests needed before your first call. We listen first and navigate together.
               </p>
             </div>

@@ -110,30 +110,26 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
       <main className="flex-1">{children}</main>
 
-      <footer className="border-t border-border bg-muted/60 py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:grid-cols-2 md:grid-cols-5 lg:px-8">
+      <footer className="border-t border-border bg-background py-16">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:grid-cols-2 md:grid-cols-5 lg:px-8">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3">
-              <img src={logo.url} alt="" className="h-10 w-10 object-contain" />
-              <span className="font-serif text-2xl font-semibold text-earth">Healing Emotions</span>
+              <img src={logo.url} alt="" className="h-8 w-8 object-contain" />
+              <span className="font-serif text-xl font-semibold text-earth">Healing Emotions</span>
             </div>
-            <p className="mt-3 text-xs uppercase tracking-wider text-primary font-semibold">
+            <p className="mt-4 text-xs uppercase tracking-widest text-primary font-medium">
               Integrated Emotional & Psychological Wellness Organisation
             </p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
+            <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
               Multiple professionals and approaches under one roof across 8 premier hospital locations in Pune & PCMC.
             </p>
-            <div className="mt-5 flex gap-2">
-              <Button asChild variant="outline" size="icon" className="h-9 w-9">
-                <a href="https://www.instagram.com/healing_emotions_services/" target="_blank" rel="noreferrer" aria-label="Instagram">
-                  <Instagram className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="icon" className="h-9 w-9">
-                <a href="https://www.linkedin.com/company/healing-emotions-services" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                  <Linkedin className="h-4 w-4" />
-                </a>
-              </Button>
+            <div className="mt-6 flex items-center gap-4 text-muted-foreground">
+              <a href="https://www.instagram.com/healing_emotions_services/" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors">
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a href="https://www.linkedin.com/company/healing-emotions-services" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
+                <Linkedin className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
@@ -177,40 +173,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-border px-5 pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
+        <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-border/50 px-5 pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
           <span>© 2026 Healing Emotions. All rights reserved.</span>
           <div className="flex flex-wrap gap-5">
-            <Link to="/first-session" className="hover:text-primary">First Session</Link>
-            <Link to="/fees" className="hover:text-primary">Fees</Link>
-            <Link to="/privacy" className="hover:text-primary">Privacy</Link>
-            <Link to="/terms" className="hover:text-primary">Terms</Link>
-            <Link to="/disclaimer" className="hover:text-primary">Disclaimer</Link>
-            <Link to="/auth" className="hover:text-primary">Staff</Link>
+            <Link to="/first-session" className="hover:text-primary transition-colors">First Session</Link>
+            <Link to="/fees" className="hover:text-primary transition-colors">Fees</Link>
+            <Link to="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors">Terms</Link>
+            <Link to="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link>
+            <Link to="/auth" className="hover:text-primary transition-colors">Staff</Link>
           </div>
         </div>
       </footer>
-
-      {/* FLOATING ACTION BUTTONS */}
-      <div className="fixed bottom-4 right-4 z-30 flex items-center gap-2 sm:bottom-6 sm:right-6">
-        <Button
-          onClick={() => setBookModalOpen(true)}
-          className="rounded-full shadow-xl h-12 px-5 gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
-        >
-          <CalendarCheck2 className="h-5 w-5" />
-          <span className="hidden sm:inline font-semibold">Book a Session</span>
-          <span className="sm:hidden font-semibold">Book</span>
-        </Button>
-        <Button asChild variant="outline" size="icon" className="h-12 w-12 rounded-full bg-background shadow-xl border-border">
-          <a href={`tel:${contact.phone}`} aria-label="Call Healing Emotions">
-            <Phone className="h-5 w-5 text-primary" />
-          </a>
-        </Button>
-        <Button asChild size="icon" className="h-12 w-12 rounded-full shadow-xl bg-emerald-600 hover:bg-emerald-700 text-white">
-          <a href={contact.whatsapp} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
-            <MessageCircle className="h-5 w-5" />
-          </a>
-        </Button>
-      </div>
 
       <BookingModal open={bookModalOpen} onOpenChange={setBookModalOpen} />
     </div>
@@ -219,11 +193,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 export function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
-    <section className="bg-sage-soft py-16 sm:py-24 border-b border-border/50">
-      <div className="mx-auto max-w-4xl px-5 text-center">
-        <p className="text-xs font-semibold uppercase tracking-wider text-primary">{eyebrow}</p>
-        <h1 className="mt-4 font-serif text-4xl leading-tight text-earth sm:text-5xl lg:text-6xl">{title}</h1>
-        <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
+    <section className="bg-background py-16 sm:py-24 border-b border-border/50">
+      <div className="mx-auto max-w-4xl px-5">
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary">{eyebrow}</p>
+        <h1 className="mt-4 font-serif text-4xl leading-[1.1] text-earth sm:text-5xl lg:text-6xl">{title}</h1>
+        <p className="mt-5 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
           {description}
         </p>
       </div>

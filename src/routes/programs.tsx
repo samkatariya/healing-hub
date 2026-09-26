@@ -76,56 +76,60 @@ function ForOrganizationsPage() {
       />
 
       <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-5xl px-5 lg:px-8 space-y-16">
+          <div className="grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {orgOfferings.map((item) => {
               const Icon = item.icon;
               return (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-border bg-card p-6 shadow-xs flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-sage-soft text-primary">
-                      <Icon className="h-5 w-5" />
+                <div key={item.title} className="border-t border-border/60 pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage-soft text-primary">
+                      <Icon className="h-4 w-4" />
                     </div>
-                    <h2 className="mt-4 font-serif text-2xl text-earth">{item.title}</h2>
-                    <p className="mt-2 text-xs leading-6 text-muted-foreground">{item.desc}</p>
+                    <h2 className="font-serif text-xl text-earth">{item.title}</h2>
                   </div>
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.desc}</p>
                 </div>
               );
             })}
 
-            <div className="rounded-2xl border border-primary/40 bg-sage-soft/40 p-6 flex flex-col justify-between sm:col-span-2 lg:col-span-1">
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-primary">Direct Discussion</span>
-                <h2 className="mt-2 font-serif text-2xl text-earth">Custom Requirement?</h2>
-                <p className="mt-2 text-xs leading-6 text-muted-foreground">
-                  Connect directly with Psy. Yash Daga to tailor a program suited to your organization.
-                </p>
-              </div>
+            <div className="border-t border-border/60 pt-6 sm:col-span-2 lg:col-span-1">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">Direct Discussion</span>
+              <h2 className="mt-3 font-serif text-xl text-earth">Custom Requirement?</h2>
+              <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                Connect directly with Psy. Yash Daga to tailor a program suited to your organization.
+              </p>
               <div className="mt-6">
-                <Button className="w-full rounded-full" onClick={() => setModalOpen(true)}>
-                  Discuss Your Requirements
-                </Button>
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+                >
+                  Discuss Your Requirements <ArrowRight className="h-4 w-4 ml-1.5" />
+                </button>
               </div>
             </div>
           </div>
 
-          <div className="mt-16 rounded-3xl bg-sage-soft p-8 text-center sm:p-14 border border-border/70">
-            <h3 className="font-serif text-3xl text-earth">Invest in sustainable team wellbeing</h3>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
-              We design non-performative, genuinely helpful mental health frameworks for modern workplaces.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="rounded-full px-8 shadow-sm" onClick={() => setModalOpen(true)}>
-                Discuss Your Requirements
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full bg-background">
-                <a href={contact.whatsapp} target="_blank" rel="noreferrer">
-                  WhatsApp Direct Desk
-                </a>
-              </Button>
+          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+            <div className="max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Corporate Wellbeing
+              </span>
+              <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">Invest in sustainable team wellbeing</h3>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                We design non-performative, genuinely helpful mental health frameworks for modern workplaces.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+              >
+                Discuss Requirements <ArrowRight className="h-4 w-4 ml-1.5" />
+              </button>
+              <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
+                WhatsApp Direct Desk
+              </a>
             </div>
           </div>
         </div>
