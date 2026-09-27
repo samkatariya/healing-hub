@@ -9,10 +9,10 @@ async function adminRepo(context: {
   supabase: any;
   userId: string;
 }): Promise<AdminContentRepository> {
-  const { createSupabaseAdminRepository } = await import(
-    "@/lib/content/supabase.repository.server"
+  const { createDrizzleAdminRepository } = await import(
+    "@/lib/content/drizzle.repository.server"
   );
-  const repo = createSupabaseAdminRepository(context.supabase, context.userId);
+  const repo = createDrizzleAdminRepository(context.userId);
   await repo.assertAdmin();
   return repo;
 }
