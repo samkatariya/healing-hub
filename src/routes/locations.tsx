@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Phone, ExternalLink, CalendarCheck2, ShieldCheck, Check } from "lucide-react";
+import { MapPin, Phone, ExternalLink, CalendarCheck2, ShieldCheck, Check, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";

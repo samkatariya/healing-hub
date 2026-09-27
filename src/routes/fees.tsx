@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, CalendarCheck2, ShieldAlert } from "lucide-react";
+import { Check, CalendarCheck2, ShieldAlert, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";

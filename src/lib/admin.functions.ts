@@ -1,12 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { requireAuth } from "@/lib/auth-middleware";
 import type { AdminContentRepository } from "@/lib/content/types";
 
 // Storage details live in the content repository; these functions only handle
 // validation and authorisation, so a different backend needs no changes here.
 async function adminRepo(context: {
-  supabase: any;
   userId: string;
 }): Promise<AdminContentRepository> {
   const { createDrizzleAdminRepository } = await import(
@@ -18,7 +17,7 @@ async function adminRepo(context: {
 }
 
 export const getAdminContent = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
+  .middleware([requireAuth])
   .handler(async ({ context }) => (await adminRepo(context)).getAdminContent());
 
 const articleSchema = z.object({
@@ -37,10 +36,10 @@ const articleSchema = z.object({
 });
 
 export const saveArticle = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
+  .middleware([requireAuth])
   .inputValidator((input) => articleSchema.parse(input))
   .handler(async ({ data, context }) =>
-    (await adminRepo(context)).saveArticle(data, context.userId),
+    (await adminRepo(context)).saveArticle(data as any, context.userId),
   );
 
 const simpleSchema = z.discriminatedUnion("table", [
@@ -95,7 +94,7 @@ const simpleSchema = z.discriminatedUnion("table", [
 ]);
 
 export const saveSimpleContent = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
+  .middleware([requireAuth])
   .inputValidator((input) => simpleSchema.parse(input))
   .handler(async ({ data, context }) => {
     await (await adminRepo(context)).saveSimpleContent(data.table, data.id, data.values);
@@ -103,7 +102,7 @@ export const saveSimpleContent = createServerFn({ method: "POST" })
   });
 
 export const deleteContent = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
+  .middleware([requireAuth])
   .inputValidator((input) =>
     z
       .object({

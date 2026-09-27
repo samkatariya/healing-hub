@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Star, MessageSquarePlus, ExternalLink, Send, CheckCircle2 } from "lucide-react";
+import { Star, MessageSquarePlus, ExternalLink, Send, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
