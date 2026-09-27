@@ -44,17 +44,17 @@ function ServicesPage() {
                 <DialogTrigger asChild>
                   <div
                     id={svc.slug}
-                    className="group cursor-pointer flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 scroll-mt-28"
+                    className="group cursor-pointer flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:shadow-md hover:border-blue-200 hover:bg-blue-50/30 scroll-mt-28"
                   >
                     <h2 className="font-serif text-2xl text-earth">{svc.title}</h2>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary">{svc.summary}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary group-hover:text-blue-700/70 transition-colors duration-500">{svc.summary}</p>
                     <p className="mt-4 text-sm leading-6 text-muted-foreground line-clamp-3 mb-6">
                       {svc.body}
                     </p>
                     
                     <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between text-sm font-medium">
-                      <span className="text-primary group-hover:text-earth transition-colors">Details & Booking</span>
-                      <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
+                      <span className="text-primary group-hover:text-blue-700/80 transition-colors">Details & Booking</span>
+                      <ArrowRight className="h-4 w-4 text-primary group-hover:text-blue-700/80 group-hover:translate-x-1 transition-all duration-500" />
                     </div>
                   </div>
                 </DialogTrigger>

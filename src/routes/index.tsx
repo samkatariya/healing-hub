@@ -189,13 +189,13 @@ function HomePage() {
             {/* CARD 1 */}
             <Dialog>
               <DialogTrigger asChild>
-                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 text-center">
-                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Users2 className="h-6 w-6 text-primary" />
+                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all duration-500 hover:shadow-md hover:border-blue-200 hover:bg-blue-50/30 text-center">
+                  <div className="mx-auto bg-primary/10 group-hover:bg-blue-100/50 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500">
+                    <Users2 className="h-6 w-6 text-primary group-hover:text-blue-700/70 transition-colors" />
                   </div>
                   <h3 className="font-serif text-xl text-earth">Cross-Discipline Care</h3>
                   <p className="mt-3 text-sm text-muted-foreground">Psychotherapy, child therapy, speech therapy, and occupational therapy...</p>
-                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center">
+                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center group-hover:text-blue-700/70 transition-colors">
                     Read More <ArrowRight className="ml-1.5 h-3 w-3" />
                   </span>
                 </div>
@@ -213,13 +213,13 @@ function HomePage() {
             {/* CARD 2 */}
             <Dialog>
               <DialogTrigger asChild>
-                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 text-center">
-                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Sparkles className="h-6 w-6 text-primary" />
+                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all duration-500 hover:shadow-md hover:border-blue-200 hover:bg-blue-50/30 text-center">
+                  <div className="mx-auto bg-primary/10 group-hover:bg-blue-100/50 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500">
+                    <Sparkles className="h-6 w-6 text-primary group-hover:text-blue-700/70 transition-colors" />
                   </div>
                   <h3 className="font-serif text-xl text-earth">Allied Modalities</h3>
                   <p className="mt-3 text-sm text-muted-foreground">Art therapy, music therapy, dance & movement therapy, and reminiscence...</p>
-                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center">
+                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center group-hover:text-blue-700/70 transition-colors">
                     Read More <ArrowRight className="ml-1.5 h-3 w-3" />
                   </span>
                 </div>
@@ -237,13 +237,13 @@ function HomePage() {
             {/* CARD 3 */}
             <Dialog>
               <DialogTrigger asChild>
-                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 text-center">
-                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Compass className="h-6 w-6 text-primary" />
+                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all duration-500 hover:shadow-md hover:border-blue-200 hover:bg-blue-50/30 text-center">
+                  <div className="mx-auto bg-primary/10 group-hover:bg-blue-100/50 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500">
+                    <Compass className="h-6 w-6 text-primary group-hover:text-blue-700/70 transition-colors" />
                   </div>
                   <h3 className="font-serif text-xl text-earth">No Confusing Jargon</h3>
                   <p className="mt-3 text-sm text-muted-foreground">We speak human to human. The focus is always on your goals, practical daily...</p>
-                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center">
+                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center group-hover:text-blue-700/70 transition-colors">
                     Read More <ArrowRight className="ml-1.5 h-3 w-3" />
                   </span>
                 </div>
@@ -388,42 +388,42 @@ function HomePage() {
           </div>
 
           <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="group flex flex-col">
-              <div className="aspect-[4/3] bg-sage-soft flex items-center justify-center p-6 text-center border border-border/50">
-                <span className="font-serif text-xl text-earth font-medium">Interactive Mental Health Workshops</span>
+            <div className="group flex flex-col cursor-pointer">
+              <div className="aspect-[4/3] bg-sage-soft group-hover:bg-blue-50 flex items-center justify-center p-6 text-center border border-border/50 group-hover:border-blue-200 transition-all duration-500">
+                <span className="font-serif text-xl text-earth group-hover:text-blue-800 transition-colors duration-500 font-medium">Interactive Mental Health Workshops</span>
               </div>
               <div className="mt-5">
-                <p className="font-semibold text-sm text-earth tracking-wide">Workshops & Group Learning</p>
+                <p className="font-semibold text-sm text-earth group-hover:text-blue-700 transition-colors duration-500 tracking-wide">Workshops & Group Learning</p>
                 <p className="text-sm text-muted-foreground mt-2">Corporate & student wellbeing sessions</p>
               </div>
             </div>
 
-            <div className="group flex flex-col">
-              <div className="aspect-[4/3] bg-sage-soft flex items-center justify-center p-6 text-center border border-border/50">
-                <span className="font-serif text-xl text-earth font-medium">Creative Art & Movement Sessions</span>
+            <div className="group flex flex-col cursor-pointer">
+              <div className="aspect-[4/3] bg-sage-soft group-hover:bg-blue-50 flex items-center justify-center p-6 text-center border border-border/50 group-hover:border-blue-200 transition-all duration-500">
+                <span className="font-serif text-xl text-earth group-hover:text-blue-800 transition-colors duration-500 font-medium">Creative Art & Movement Sessions</span>
               </div>
               <div className="mt-5">
-                <p className="font-semibold text-sm text-earth tracking-wide">Therapy Activities</p>
+                <p className="font-semibold text-sm text-earth group-hover:text-blue-700 transition-colors duration-500 tracking-wide">Therapy Activities</p>
                 <p className="text-sm text-muted-foreground mt-2">Non-verbal emotional regulation</p>
               </div>
             </div>
 
-            <div className="group flex flex-col">
-              <div className="aspect-[4/3] bg-sage-soft flex items-center justify-center p-6 text-center border border-border/50">
-                <span className="font-serif text-xl text-earth font-medium">Senior Memory & Reminiscence Circles</span>
+            <div className="group flex flex-col cursor-pointer">
+              <div className="aspect-[4/3] bg-sage-soft group-hover:bg-blue-50 flex items-center justify-center p-6 text-center border border-border/50 group-hover:border-blue-200 transition-all duration-500">
+                <span className="font-serif text-xl text-earth group-hover:text-blue-800 transition-colors duration-500 font-medium">Senior Memory & Reminiscence Circles</span>
               </div>
               <div className="mt-5">
-                <p className="font-semibold text-sm text-earth tracking-wide">Dementia & Senior Care</p>
+                <p className="font-semibold text-sm text-earth group-hover:text-blue-700 transition-colors duration-500 tracking-wide">Dementia & Senior Care</p>
                 <p className="text-sm text-muted-foreground mt-2">Gentle cognitive comfort groups</p>
               </div>
             </div>
 
-            <div className="group flex flex-col">
-              <div className="aspect-[4/3] bg-sage-soft flex items-center justify-center p-6 text-center border border-border/50">
-                <span className="font-serif text-xl text-earth font-medium">Sports Performance Mental Training</span>
+            <div className="group flex flex-col cursor-pointer">
+              <div className="aspect-[4/3] bg-sage-soft group-hover:bg-blue-50 flex items-center justify-center p-6 text-center border border-border/50 group-hover:border-blue-200 transition-all duration-500">
+                <span className="font-serif text-xl text-earth group-hover:text-blue-800 transition-colors duration-500 font-medium">Sports Performance Mental Training</span>
               </div>
               <div className="mt-5">
-                <p className="font-semibold text-sm text-earth tracking-wide">Athlete Conditioning</p>
+                <p className="font-semibold text-sm text-earth group-hover:text-blue-700 transition-colors duration-500 tracking-wide">Athlete Conditioning</p>
                 <p className="text-sm text-muted-foreground mt-2">Focus, composure & tournament mindset</p>
               </div>
             </div>
@@ -498,10 +498,13 @@ function HomePage() {
       </section>
 
       {/* 8. FOR ORGANIZATIONS TEASER */}
-      <section className="py-24 sm:py-32 border-b border-border/50 bg-background">
+      <section className="py-24 sm:py-32 bg-blue-50/40 border-b border-border/50">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <div className="max-w-2xl">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 bg-white p-10 sm:p-16 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
+            <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none -mr-16 -mt-16 group-hover:scale-105 transition-transform duration-700">
+               <Building2 className="w-96 h-96 text-blue-900" />
+            </div>
+            <div className="max-w-2xl relative z-10">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 Corporate & Institutional
               </span>
@@ -512,13 +515,17 @@ function HomePage() {
                 Corporate Wellness · Employee Support / EAP · Workshops & Training · Psychological Assessments · Custom Programs
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 md:pt-10">
-              <Link to="/programs" className="text-sm font-medium hover:text-primary transition-colors flex items-center">
-                Discuss Requirements <ArrowRight className="h-4 w-4 ml-1.5" />
-              </Link>
-              <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
-                <MessageCircle className="h-4 w-4 mr-1.5" /> WhatsApp Desk
-              </a>
+            <div className="flex flex-col sm:flex-row gap-6 shrink-0 relative z-10">
+              <Button asChild className="bg-primary hover:bg-blue-800 text-white rounded-full font-semibold h-12 px-6 transition-colors duration-300">
+                <Link to="/programs">
+                  Discuss Requirements <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="border-blue-200 text-blue-900 hover:bg-blue-50 rounded-full h-12 px-6">
+                <a href={contact.whatsapp} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4 mr-2" /> WhatsApp Desk
+                </a>
+              </Button>
             </div>
           </div>
         </div>

@@ -81,37 +81,38 @@ function ForOrganizationsPage() {
             {orgOfferings.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="border-t border-border/60 pt-6">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage-soft text-primary">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <h2 className="font-serif text-xl text-earth">{item.title}</h2>
+                <div key={item.title} className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all duration-500 hover:shadow-md hover:border-blue-200 hover:bg-blue-50/30">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 group-hover:bg-blue-100/50 mb-6 group-hover:scale-110 transition-all duration-500">
+                    <Icon className="h-6 w-6 text-primary group-hover:text-blue-700/70 transition-colors" />
                   </div>
+                  <h2 className="font-serif text-2xl text-earth">{item.title}</h2>
                   <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.desc}</p>
                 </div>
               );
             })}
 
-            <div className="border-t border-border/60 pt-6 sm:col-span-2 lg:col-span-1">
+            <div className="sm:col-span-2 lg:col-span-1 flex flex-col justify-center rounded-2xl bg-blue-50/50 border border-blue-100 p-8">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">Direct Discussion</span>
-              <h2 className="mt-3 font-serif text-xl text-earth">Custom Requirement?</h2>
+              <h2 className="mt-3 font-serif text-2xl text-earth">Custom Requirement?</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
                 Connect directly with Psy. Yash Daga to tailor a program suited to your organization.
               </p>
-              <div className="mt-6">
-                <button
+              <div className="mt-8">
+                <Button
                   onClick={() => setModalOpen(true)}
-                  className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+                  className="w-full bg-primary hover:bg-blue-800 text-white rounded-full font-semibold transition-colors duration-300"
                 >
                   Discuss Your Requirements <ArrowRight className="h-4 w-4 ml-1.5" />
-                </button>
+                </Button>
               </div>
             </div>
           </div>
 
-          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <div className="max-w-2xl">
+          <div className="mt-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12 bg-white p-10 sm:p-16 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
+            <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none -mr-16 -mt-16 group-hover:scale-105 transition-transform duration-700">
+               <Building2 className="w-96 h-96 text-blue-900" />
+            </div>
+            <div className="max-w-2xl relative z-10">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 Corporate Wellbeing
               </span>
@@ -120,16 +121,18 @@ function ForOrganizationsPage() {
                 We design non-performative, genuinely helpful mental health frameworks for modern workplaces.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
-              <button
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0 relative z-10">
+              <Button
                 onClick={() => setModalOpen(true)}
-                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+                className="bg-primary hover:bg-blue-800 text-white rounded-full font-semibold h-12 px-6 transition-colors duration-300"
               >
                 Discuss Requirements <ArrowRight className="h-4 w-4 ml-1.5" />
-              </button>
-              <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
-                WhatsApp Direct Desk
-              </a>
+              </Button>
+              <Button asChild variant="outline" className="border-blue-200 text-blue-900 hover:bg-blue-50 rounded-full h-12 px-6">
+                <a href={contact.whatsapp} target="_blank" rel="noreferrer">
+                  <MessageSquare className="h-4 w-4 mr-2" /> WhatsApp Desk
+                </a>
+              </Button>
             </div>
           </div>
         </div>

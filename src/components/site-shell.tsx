@@ -2,18 +2,15 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, Phone, X, MessageCircle, Instagram, Linkedin, CalendarCheck2 } from "lucide-react";
 import { useState, useEffect, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/healing-emotions-logo.png.asset.json";
+import logo from "@/assets/healing-logo.png";
 import { contact } from "@/lib/site-data";
 import { BookingModal } from "@/components/booking-modal";
 
 const links = [
   ["Home", "/"],
-  ["What Brings You Here?", "/what-brings-you-here"],
   ["Services", "/services"],
+  ["Organizations", "/programs"],
   ["Journal", "/blog"],
-  ["Locations", "/locations"],
-  ["About", "/about"],
-  ["For Organizations", "/programs"],
   ["Contact", "/contact"],
 ] as const;
 
@@ -48,7 +45,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
           <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Healing Emotions home">
-            <img src={logo.url} alt="" className="h-10 w-10 object-contain" />
+            <img src={logo} alt="" className="h-10 w-10 object-contain" />
             <span className={`font-serif text-xl font-semibold transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-earth'}`}>Healing Emotions</span>
           </Link>
 
@@ -148,7 +145,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:grid-cols-2 md:grid-cols-5 lg:px-8">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3">
-              <img src={logo.url} alt="" className="h-8 w-8 object-contain" />
+              <img src={logo} alt="" className="h-8 w-8 object-contain" />
               <span className="font-serif text-xl font-semibold text-earth">Healing Emotions</span>
             </div>
             <p className="mt-4 text-xs uppercase tracking-widest text-primary font-medium">

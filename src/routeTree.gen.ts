@@ -28,7 +28,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as WhatBringsYouHereRouteImport } from './routes/what-brings-you-here'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated.admin'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -134,7 +134,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRouteWithChildren
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
@@ -155,7 +155,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRouteWithChildren
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
@@ -178,7 +178,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRouteWithChildren
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
   '/faqs': typeof FaqsRoute
@@ -193,7 +193,7 @@ export interface FileRoutesById {
   '/testimonials': typeof TestimonialsRoute
   '/what-brings-you-here': typeof WhatBringsYouHereRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
-  '/blog/$slug': typeof BlogSlugRoute
+  '/blog_/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -259,7 +259,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/what-brings-you-here'
     | '/_authenticated/admin'
-    | '/blog/$slug'
+    | '/blog_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -267,7 +267,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
-  BlogRoute: typeof BlogRouteWithChildren
+  BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
   FaqsRoute: typeof FaqsRoute
@@ -281,6 +281,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WhatBringsYouHereRoute: typeof WhatBringsYouHereRoute
+  BlogSlugRoute: typeof BlogSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -418,12 +419,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/$slug'
+    '/blog_/$slug': {
+      id: '/blog_/$slug'
+      path: '/blog/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof BlogRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -439,22 +440,12 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
-interface BlogRouteChildren {
-  BlogSlugRoute: typeof BlogSlugRoute
-}
-
-const BlogRouteChildren: BlogRouteChildren = {
-  BlogSlugRoute: BlogSlugRoute,
-}
-
-const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
-  BlogRoute: BlogRouteWithChildren,
+  BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
   FaqsRoute: FaqsRoute,
@@ -468,6 +459,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
   WhatBringsYouHereRoute: WhatBringsYouHereRoute,
+  BlogSlugRoute: BlogSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
