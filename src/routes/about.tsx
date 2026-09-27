@@ -25,7 +25,7 @@ function AboutPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Integrated Emotional & Psychological Wellness"
+
         title="About Healing Emotions"
         description="Healing Emotions is an integrated emotional and psychological wellness organisation bringing together professionals and therapeutic approaches under one roof."
       />

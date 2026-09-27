@@ -31,7 +31,7 @@ function ServicesPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Services & Approaches"
+
         title="Find your need. Find the right support."
         description="We provide comprehensive psychological and therapeutic services for children, adults, couples, and seniors across Pune hospital centres."
       />
@@ -44,17 +44,17 @@ function ServicesPage() {
                 <DialogTrigger asChild>
                   <div
                     id={svc.slug}
-                    className="group cursor-pointer flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:shadow-md hover:border-blue-200 hover:bg-blue-50/30 scroll-mt-28"
+                    className="group cursor-pointer flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl border border-border/40 bg-card p-10 transition-colors hover:border-earth/30 active:opacity-70 scroll-mt-28"
                   >
                     <h2 className="font-serif text-2xl text-earth">{svc.title}</h2>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary group-hover:text-blue-700/70 transition-colors duration-500">{svc.summary}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary group-hover:text-earth/80 transition-colors">{svc.summary}</p>
                     <p className="mt-4 text-sm leading-6 text-muted-foreground line-clamp-3 mb-6">
                       {svc.body}
                     </p>
                     
-                    <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between text-sm font-medium">
-                      <span className="text-primary group-hover:text-blue-700/80 transition-colors">Details & Booking</span>
-                      <ArrowRight className="h-4 w-4 text-primary group-hover:text-blue-700/80 group-hover:translate-x-1 transition-all duration-500" />
+                    <div className="mt-auto w-full pt-4 border-t border-border/50 flex items-center justify-between text-sm font-medium">
+                      <span className="text-primary group-hover:text-earth/80 transition-colors">Details & Booking</span>
+                      <ArrowRight className="h-4 w-4 text-primary group-hover:text-earth/80 group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
                 </DialogTrigger>
@@ -82,7 +82,7 @@ function ServicesPage() {
                       onClick={() => handleBookService(svc.title)}
                       className="rounded-full px-6"
                     >
-                      Book this service
+                      Select this service
                     </Button>
                     <Button asChild variant="ghost" className="rounded-full">
                       <Link to="/first-session">
@@ -96,8 +96,8 @@ function ServicesPage() {
           </div>
 
           {/* QUICK GUIDANCE CARD */}
-          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <div className="max-w-2xl">
+          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+            <div className="max-w-2xl text-center md:text-left mx-auto md:mx-0">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 Need Guidance?
               </span>
@@ -108,17 +108,17 @@ function ServicesPage() {
                 You don’t need to self-diagnose. Reach out for a quick 15-minute guidance call or schedule an initial consultation to determine the best therapeutic approach.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
+            <div className="flex flex-col sm:flex-row gap-6 shrink-0 mx-auto md:mx-0 justify-center items-center">
               <button
                 onClick={() => {
                   setSelectedSupport("Quick 15-min Call (₹500)");
                   setBookingOpen(true);
                 }}
-                className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center justify-center bg-primary text-white rounded-full px-6 py-3"
               >
-                Book 15-Min Quick Call (₹500) <ArrowRight className="h-4 w-4 ml-1.5" />
+                Schedule 15-Min Quick Call (₹500) <ArrowRight className="h-4 w-4 ml-1.5" />
               </button>
-              <Link to="/fees" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
+              <Link to="/fees" className="text-sm font-medium hover:text-primary transition-colors flex items-center justify-center text-muted-foreground">
                 View Transparent Fees
               </Link>
             </div>

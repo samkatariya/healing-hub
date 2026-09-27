@@ -32,7 +32,6 @@ function WhatBringsYouHerePage() {
   return (
     <>
       <PageIntro
-        eyebrow="Main Guided Funnel"
         title="What brings you here?"
         description="You do not need to understand every psychological approach before you start. Select what describes your situation best."
       />
@@ -41,8 +40,8 @@ function WhatBringsYouHerePage() {
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <div className="grid gap-x-12 gap-y-16 md:grid-cols-2">
             {whatBringsYouHereOptions.map((opt) => (
-              <div key={opt.id} className="flex flex-col border-t border-border/60 pt-6 group">
-                <div>
+              <div key={opt.id} className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 cursor-pointer transition-colors hover:border-earth/30 active:opacity-70 active:duration-0 group" onClick={() => handleQuickBook(opt.category, opt.supportType)}>
+                <div className="flex flex-col items-center sm:items-start">
                   <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                     {opt.lead}
                   </span>
@@ -54,15 +53,15 @@ function WhatBringsYouHerePage() {
                   </p>
                 </div>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-8 flex flex-wrap justify-center sm:justify-start items-center gap-4 w-full pt-4 border-t border-border/40">
                   <button
-                    onClick={() => handleQuickBook(opt.category, opt.supportType)}
+                    onClick={(e) => { e.stopPropagation(); handleQuickBook(opt.category, opt.supportType); }}
                     className="text-sm font-medium hover:text-primary transition-colors flex items-center"
                   >
-                    Book for this
+                    Get Support
                   </button>
                   <span className="text-border">|</span>
-                  <Link to={opt.route} className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
+                  <Link to={opt.route} onClick={(e) => e.stopPropagation()} className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
                     Explore details <ArrowRight className="h-4 w-4 ml-1.5" />
                   </Link>
                 </div>
@@ -70,8 +69,8 @@ function WhatBringsYouHerePage() {
             ))}
           </div>
 
-          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <div className="max-w-2xl">
+          <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between items-center text-center md:text-left gap-12">
+            <div className="max-w-2xl flex flex-col items-center md:items-start">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 Unsure what to choose?
               </span>
@@ -80,7 +79,7 @@ function WhatBringsYouHerePage() {
                 You do not need to have everything figured out before reaching out. A quick call will guide you directly to the right professional.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0">
+            <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0 items-center justify-center">
               <button
                 onClick={() => {
                   setSelectedWho("Myself");
@@ -89,7 +88,7 @@ function WhatBringsYouHerePage() {
                 }}
                 className="text-sm font-medium hover:text-primary transition-colors flex items-center"
               >
-                Book 15-Min Quick Call (₹500) <ArrowRight className="h-4 w-4 ml-1.5" />
+                Schedule 15-Min Quick Call (₹500) <ArrowRight className="h-4 w-4 ml-1.5" />
               </button>
               <Link to="/first-session" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
                 See what happens in the first session

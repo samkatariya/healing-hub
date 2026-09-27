@@ -50,7 +50,7 @@ function FirstSessionPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Clear Expectations"
+
         title="What happens in your first session?"
         description="A calm, structured, and compassionate first conversation. No intimidating paperwork, no psychiatric jargon."
       />
@@ -90,7 +90,7 @@ function FirstSessionPage() {
                 onClick={() => setBookingOpen(true)}
                 className="text-sm font-medium hover:text-primary transition-colors flex items-center"
               >
-                Book a Session <ArrowRight className="h-4 w-4 ml-1.5" />
+                Reach Out <ArrowRight className="h-4 w-4 ml-1.5" />
               </button>
             </div>
           </div>

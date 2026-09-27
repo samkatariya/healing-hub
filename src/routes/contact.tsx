@@ -25,7 +25,7 @@ function ContactPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Immediate Actions"
+
         title="How would you like to connect?"
         description="Choose the easiest way for you to take the first step. You do not need to prepare clinical documents before reaching out."
       />
@@ -40,7 +40,7 @@ function ContactPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                   <CalendarCheck2 className="h-5 w-5" />
                 </div>
-                <h2 className="mt-4 font-serif text-2xl text-earth">Book a Session</h2>
+                <h2 className="mt-4 font-serif text-2xl text-earth">Reach Out</h2>
                 <p className="mt-2 text-xs leading-5 text-muted-foreground">
                   Intelligent 4-step booking request. Pick who it is for, location, and your preferred time.
                 </p>

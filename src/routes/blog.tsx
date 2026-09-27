@@ -41,7 +41,7 @@ function BlogPage() {
   return (
     <>
       <PageIntro
-        eyebrow="The journal"
+
         title="Words for what you might be feeling"
         description="Grounded reflections—written to be useful, never overwhelming."
       />

@@ -70,7 +70,7 @@ function TestimonialsPage() {
   return (
     <>
       <PageIntro
-        eyebrow="What People Say"
+
         title="Client Experiences"
         description="Genuine reflections shared with explicit consent. Mental health journeys are personal, and trust always comes first."
       />
@@ -78,14 +78,14 @@ function TestimonialsPage() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-5 lg:px-8 space-y-20">
           {/* HEADER ACTION BAR */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-border/60 pb-8">
-            <div className="max-w-xl">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-border/60 pb-8 items-center text-center sm:text-left">
+            <div className="max-w-xl flex flex-col items-center sm:items-start">
               <h2 className="font-serif text-3xl text-earth">Have you attended a session?</h2>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
                 Your feedback helps us continuously improve our multidisciplinary care.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0 items-center justify-center">
               <button
                 onClick={() => setFeedbackOpen(true)}
                 className="text-sm font-medium hover:text-primary transition-colors flex items-center"
@@ -103,17 +103,17 @@ function TestimonialsPage() {
             {displayList.map((t, idx) => (
               <blockquote
                 key={t.id || idx}
-                className="flex flex-col"
+                className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 transition-colors hover:border-earth/30"
               >
-                <div className="flex text-amber-500 mb-4 gap-0.5">
+                <div className="flex text-amber-500 mb-6 gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <p className="font-serif text-lg leading-relaxed text-earth">
+                <p className="font-serif text-lg leading-relaxed text-earth italic">
                   “{t.quote}”
                 </p>
-                <footer className="mt-8 pt-4 border-t border-border/60">
+                <footer className="mt-8 w-full pt-4 border-t border-border/40 flex flex-col items-center sm:items-start">
                   <div className="font-medium text-sm text-earth">{t.attribution}</div>
                   {t.context && (
                     <div className="text-xs text-muted-foreground mt-1">{t.context}</div>
@@ -124,8 +124,8 @@ function TestimonialsPage() {
           </div>
 
           {/* POLICY CALLOUT */}
-          <div className="border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <div className="max-w-2xl">
+          <div className="border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between items-center text-center md:text-left gap-12">
+            <div className="max-w-2xl flex flex-col items-center md:items-start">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 Trust & Integrity
               </span>

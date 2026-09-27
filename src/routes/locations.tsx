@@ -30,7 +30,7 @@ function LocationsPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Pune & PCMC Presence"
+
         title="Find a Healing Emotions Location"
         description="We partner with established hospitals across Pune so you can access professional, multidisciplinary emotional healthcare close to your neighbourhood."
       />
@@ -63,7 +63,7 @@ function LocationsPage() {
                       onClick={() => handleBookLocation(loc.name)}
                       className="text-sm font-medium hover:text-primary transition-colors flex items-center"
                     >
-                      Book at this location
+                      Connect at this location
                     </button>
                     <span className="text-border">|</span>
                     <a href={loc.mapsUrl} target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
@@ -98,7 +98,7 @@ function LocationsPage() {
                 }}
                 className="text-sm font-medium hover:text-primary transition-colors flex items-center"
               >
-                Book Online Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
+                Schedule Online Consultation <ArrowRight className="h-4 w-4 ml-1.5" />
               </button>
             </div>
           </div>

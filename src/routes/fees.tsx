@@ -30,7 +30,7 @@ function FeesPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Financial Transparency"
+
         title="Clear, upfront fees. No hidden costs."
         description="We believe in simple, transparent fee structures so you know exactly what to anticipate from your very first session."
       />
@@ -100,7 +100,7 @@ function FeesPage() {
                 onClick={() => setBookingOpen(true)}
                 className="text-sm font-medium hover:text-primary transition-colors flex items-center"
               >
-                Book a Session <ArrowRight className="h-4 w-4 ml-1.5" />
+                Reach Out <ArrowRight className="h-4 w-4 ml-1.5" />
               </button>
             </div>
           </div>

@@ -35,21 +35,19 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <header
-        className={`z-40 transition-colors duration-300 ${
-          isHome ? "fixed top-0 left-0 right-0" : "sticky top-0"
-        } ${
-          isTransparent
+        className={`z-40 transition-colors duration-300 ${isHome ? "fixed top-0 left-0 right-0" : "sticky top-0"
+          } ${isTransparent
             ? "border-transparent bg-transparent"
             : "border-b border-border/70 bg-background/95 backdrop-blur-xl"
-        }`}
+          }`}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
-          <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Healing Emotions home">
-            <img src={logo} alt="" className="h-10 w-10 object-contain" />
-            <span className={`font-serif text-xl font-semibold transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-earth'}`}>Healing Emotions</span>
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8 relative">
+          <Link to="/" className="flex items-center gap-3 shrink-0 absolute left-1/2 -translate-x-1/2 lg:static lg:transform-none w-max" aria-label="Healing Emotions home">
+            <img src={logo} alt="" className={`h-12 w-12 object-contain transition-all duration-300 ${isTransparent ? 'brightness-0 invert' : ''}`} />
+            <span className={`font-serif text-2xl font-bold tracking-tight transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-earth'}`}>Healing Emotions</span>
           </Link>
 
-          <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-6 xl:gap-7 lg:flex ml-auto" aria-label="Main navigation">
             {links.map(([label, to]) => {
               const isActive = pathname === to;
               let linkClass = "text-sm font-medium transition-colors duration-300 ";
@@ -70,27 +68,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <Button
-              onClick={() => setBookModalOpen(true)}
-              className={`rounded-full px-5 shadow-sm font-medium transition-colors duration-300 ${
-                isTransparent ? "bg-white text-earth hover:bg-white/90" : ""
-              }`}
-            >
-              <CalendarCheck2 className="h-4 w-4 mr-1.5" /> Book a Session
-            </Button>
-          </div>
-
-          <div className="flex items-center gap-2 lg:hidden">
-            <Button
-              size="sm"
-              onClick={() => setBookModalOpen(true)}
-              className={`rounded-full px-3.5 text-xs transition-colors duration-300 ${
-                isTransparent ? "bg-white text-earth hover:bg-white/90" : ""
-              }`}
-            >
-              Book
-            </Button>
+          <div className="flex items-center gap-2 lg:hidden ml-auto">
             <Button
               variant="ghost"
               size="icon"
@@ -111,9 +89,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   key={to}
                   to={to}
                   onClick={() => setOpen(false)}
-                  className={`rounded-md px-3 py-3 text-base ${
-                    pathname === to ? "bg-sage-soft font-semibold text-primary" : "text-foreground hover:bg-muted"
-                  }`}
+                  className={`rounded-md px-3 py-3 text-base ${pathname === to ? "bg-sage-soft font-semibold text-primary" : "text-foreground hover:bg-muted"
+                    }`}
                 >
                   {label}
                 </Link>
@@ -126,7 +103,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   }}
                   className="w-full rounded-full"
                 >
-                  <CalendarCheck2 className="h-4 w-4 mr-2" /> Book a Session
+                  <CalendarCheck2 className="h-4 w-4 mr-2" /> Reach Out
                 </Button>
                 <Button asChild variant="outline" className="w-full rounded-full">
                   <a href={contact.whatsapp} target="_blank" rel="noreferrer">
@@ -142,19 +119,19 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
 
       <footer className="border-t border-border bg-background py-16">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:grid-cols-2 md:grid-cols-5 lg:px-8">
-          <div className="sm:col-span-2">
-            <div className="flex items-center gap-3">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:grid-cols-2 md:grid-cols-5 lg:px-8 text-center sm:text-left">
+          <div className="sm:col-span-2 flex flex-col items-center sm:items-start">
+            <div className="flex items-center justify-center sm:justify-start gap-3">
               <img src={logo} alt="" className="h-8 w-8 object-contain" />
               <span className="font-serif text-xl font-semibold text-earth">Healing Emotions</span>
             </div>
             <p className="mt-4 text-xs uppercase tracking-widest text-primary font-medium">
               Integrated Emotional & Psychological Wellness Organisation
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
+            <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground mx-auto sm:mx-0">
               Multiple professionals and approaches under one roof across 8 premier hospital locations in Pune & PCMC.
             </p>
-            <div className="mt-6 flex items-center gap-4 text-muted-foreground">
+            <div className="mt-6 flex items-center justify-center sm:justify-start gap-4 text-muted-foreground">
               <a href="https://www.instagram.com/healing_emotions_services/" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors">
                 <Instagram className="h-4 w-4" />
               </a>
@@ -205,9 +182,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-border/50 px-5 pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
+        <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center sm:items-start text-center sm:text-left gap-4 border-t border-border/50 px-5 pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
           <span>© 2026 Healing Emotions. All rights reserved.</span>
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5">
             <Link to="/first-session" className="hover:text-primary transition-colors">First Session</Link>
             <Link to="/fees" className="hover:text-primary transition-colors">Fees</Link>
             <Link to="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
@@ -223,13 +200,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
   );
 }
 
-export function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+export function PageIntro({ eyebrow, title, description }: { eyebrow?: string; title: string; description: string }) {
   return (
     <section className="bg-background py-16 sm:py-24 border-b border-border/50">
-      <div className="mx-auto max-w-4xl px-5">
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary">{eyebrow}</p>
+      <div className="mx-auto max-w-4xl px-5 text-center sm:text-left">
+        {eyebrow && <p className="text-xs font-semibold uppercase tracking-widest text-primary">{eyebrow}</p>}
         <h1 className="mt-4 font-serif text-4xl leading-[1.1] text-earth sm:text-5xl lg:text-6xl">{title}</h1>
-        <p className="mt-5 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
+        <p className="mt-5 max-w-2xl mx-auto sm:mx-0 text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
           {description}
         </p>
       </div>
