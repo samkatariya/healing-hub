@@ -10,6 +10,7 @@ const links = [
   ["Home", "/"],
   ["What Brings You Here?", "/what-brings-you-here"],
   ["Services", "/services"],
+  ["Journal", "/blog"],
   ["Locations", "/locations"],
   ["About", "/about"],
   ["For Organizations", "/programs"],
@@ -184,6 +185,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <Link to="/locations" className="hover:text-primary">Hospital Locations</Link>
               <Link to="/programs" className="hover:text-primary">For Organizations</Link>
               <Link to="/testimonials" className="hover:text-primary">Client Experiences</Link>
+              <Link to="/blog" className="hover:text-primary">The Journal</Link>
             </div>
           </div>
 

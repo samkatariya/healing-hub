@@ -30,12 +30,7 @@ const MenuBar = ({ editor }: { editor: any }) => {
     return null
   }
 
-  const addImage = () => {
-    const url = window.prompt('URL')
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run()
-    }
-  }
+
 
   const setLink = () => {
     const previousUrl = editor.getAttributes('link').href
@@ -149,12 +144,54 @@ const MenuBar = ({ editor }: { editor: any }) => {
       <Button
         variant="ghost"
         size="icon"
-        className="h-8 w-8"
-        onClick={addImage}
+        className="h-8 w-8 relative"
         type="button"
-        title="Add Image"
+        title="Upload Image"
       >
         <ImageIcon className="h-4 w-4" />
+        <input 
+          type="file" 
+          accept="image/*"
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          onChange={(e) => {
+            const file = e.target.files?.[0]
+            if (!file) return
+            
+            // Compress and convert to base64
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = (event) => {
+              const img = new window.Image()
+              img.src = event.target?.result as string
+              img.onload = () => {
+                const canvas = document.createElement('canvas')
+                let width = img.width
+                let height = img.height
+                
+                // Max width/height to prevent massive base64 strings
+                const MAX = 1200
+                if (width > height && width > MAX) {
+                  height *= MAX / width
+                  width = MAX
+                } else if (height > MAX) {
+                  width *= MAX / height
+                  height = MAX
+                }
+                
+                canvas.width = width
+                canvas.height = height
+                const ctx = canvas.getContext('2d')
+                ctx?.drawImage(img, 0, 0, width, height)
+                
+                // Convert back to compressed base64 jpeg
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.8)
+                editor.chain().focus().setImage({ src: dataUrl }).run()
+              }
+            }
+            // Reset input
+            e.target.value = ''
+          }}
+        />
       </Button>
 
       <div className="w-[1px] h-6 bg-border mx-1" />
