@@ -3,6 +3,7 @@ import { ArrowRight, CalendarCheck2, Check, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { fallbackServices, specialisedTherapiesList } from "@/lib/site-data";
 import { BookingModal } from "@/components/booking-modal";
 
@@ -37,43 +38,60 @@ function ServicesPage() {
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-5 lg:px-8 space-y-16">
-          <div className="grid gap-x-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {fallbackServices.map((svc) => (
-              <div
-                key={svc.slug}
-                id={svc.slug}
-                className="flex flex-col border-t border-border/60 pt-6 group scroll-mt-28"
-              >
-                <div>
-                  <h2 className="font-serif text-2xl text-earth group-hover:text-primary transition-colors">{svc.title}</h2>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary">{svc.summary}</p>
-                  <p className="mt-4 text-sm leading-6 text-muted-foreground">{svc.body}</p>
-
-                  {svc.slug === "specialised-therapies" && (
-                    <div className="mt-6">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-earth mb-2">
-                        Specialised Allied Disciplines:
-                      </p>
-                      <p className="text-sm leading-6 text-muted-foreground">
-                        {specialisedTherapiesList.join(" · ")}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <button
-                    onClick={() => handleBookService(svc.title)}
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+              <Dialog key={svc.slug}>
+                <DialogTrigger asChild>
+                  <div
+                    id={svc.slug}
+                    className="group cursor-pointer flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 scroll-mt-28"
                   >
-                    Book session
-                  </button>
-                  <span className="text-border">|</span>
-                  <Link to="/first-session" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
-                    Process <ArrowRight className="h-4 w-4 ml-1.5" />
-                  </Link>
-                </div>
-              </div>
+                    <h2 className="font-serif text-2xl text-earth">{svc.title}</h2>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary">{svc.summary}</p>
+                    <p className="mt-4 text-sm leading-6 text-muted-foreground line-clamp-3 mb-6">
+                      {svc.body}
+                    </p>
+                    
+                    <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between text-sm font-medium">
+                      <span className="text-primary group-hover:text-earth transition-colors">Details & Booking</span>
+                      <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-xl">
+                  <DialogHeader>
+                    <DialogTitle className="font-serif text-2xl text-earth">{svc.title}</DialogTitle>
+                  </DialogHeader>
+                  <div className="mt-2 text-sm text-muted-foreground leading-7">
+                    <p>{svc.body}</p>
+                    
+                    {svc.slug === "specialised-therapies" && (
+                      <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-earth mb-2">
+                          Specialised Allied Disciplines:
+                        </p>
+                        <p className="text-sm leading-6 text-muted-foreground">
+                          {specialisedTherapiesList.join(" · ")}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="mt-6 flex flex-wrap items-center gap-4 pt-6 border-t border-border/50">
+                    <Button
+                      onClick={() => handleBookService(svc.title)}
+                      className="rounded-full px-6"
+                    >
+                      Book this service
+                    </Button>
+                    <Button asChild variant="ghost" className="rounded-full">
+                      <Link to="/first-session">
+                        What to expect
+                      </Link>
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
 

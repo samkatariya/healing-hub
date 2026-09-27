@@ -16,6 +16,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import {
   contact,
   fallbackServices,
@@ -169,7 +170,7 @@ function HomePage() {
       {/* 3. WHO WE SUPPORT & ONE ROOF MULTIPLE APPROACHES */}
       <section className="bg-sage-soft/30 py-24 sm:py-32 border-b border-border/50">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-3xl text-center">
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               Our Core Approach
             </span>
@@ -184,42 +185,92 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-x-12 gap-y-12 md:grid-cols-3">
-            <div className="flex flex-col border-t border-border/60 pt-6">
-              <span className="text-xs font-semibold text-primary uppercase tracking-widest">01. Multidisciplinary</span>
-              <h3 className="mt-3 font-serif text-2xl text-earth">Cross-Discipline Care</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Psychotherapy, child therapy, speech therapy, and occupational therapy work hand-in-hand rather than in isolated clinics.
-              </p>
-            </div>
+          <div className="mt-16 grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+            {/* CARD 1 */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 text-center">
+                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Users2 className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-xl text-earth">Cross-Discipline Care</h3>
+                  <p className="mt-3 text-sm text-muted-foreground">Psychotherapy, child therapy, speech therapy, and occupational therapy...</p>
+                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center">
+                    Read More <ArrowRight className="ml-1.5 h-3 w-3" />
+                  </span>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-2xl text-earth">Cross-Discipline Care</DialogTitle>
+                </DialogHeader>
+                <div className="text-sm text-muted-foreground leading-7">
+                  Psychotherapy, child therapy, speech therapy, and occupational therapy work hand-in-hand rather than in isolated clinics. We ensure your entire care team communicates seamlessly to provide holistic support for you or your family.
+                </div>
+              </DialogContent>
+            </Dialog>
 
-            <div className="flex flex-col border-t border-border/60 pt-6">
-              <span className="text-xs font-semibold text-primary uppercase tracking-widest">02. Creative & Somatic</span>
-              <h3 className="mt-3 font-serif text-2xl text-earth">Allied Modalities</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Art therapy, music therapy, dance & movement therapy, and reminiscence therapy for deep non-verbal and sensory healing.
-              </p>
-            </div>
+            {/* CARD 2 */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 text-center">
+                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Sparkles className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-xl text-earth">Allied Modalities</h3>
+                  <p className="mt-3 text-sm text-muted-foreground">Art therapy, music therapy, dance & movement therapy, and reminiscence...</p>
+                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center">
+                    Read More <ArrowRight className="ml-1.5 h-3 w-3" />
+                  </span>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-2xl text-earth">Creative & Somatic Modalities</DialogTitle>
+                </DialogHeader>
+                <div className="text-sm text-muted-foreground leading-7">
+                  Art therapy, music therapy, dance & movement therapy, and reminiscence therapy for deep non-verbal and sensory healing. Perfect for children, seniors, or adults who find traditional talk therapy restrictive.
+                </div>
+              </DialogContent>
+            </Dialog>
 
-            <div className="flex flex-col border-t border-border/60 pt-6">
-              <span className="text-xs font-semibold text-primary uppercase tracking-widest">03. Practical & Grounded</span>
-              <h3 className="mt-3 font-serif text-2xl text-earth">No Confusing Jargon</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                We speak human to human. The focus is always on your goals, practical daily relief, and genuine emotional resilience.
-              </p>
-            </div>
+            {/* CARD 3 */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="group cursor-pointer flex flex-col rounded-2xl bg-white border border-border/50 p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/40 text-center">
+                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Compass className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-xl text-earth">No Confusing Jargon</h3>
+                  <p className="mt-3 text-sm text-muted-foreground">We speak human to human. The focus is always on your goals, practical daily...</p>
+                  <span className="mt-6 text-xs font-medium text-primary uppercase tracking-widest flex items-center justify-center">
+                    Read More <ArrowRight className="ml-1.5 h-3 w-3" />
+                  </span>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-2xl text-earth">Practical & Grounded</DialogTitle>
+                </DialogHeader>
+                <div className="text-sm text-muted-foreground leading-7">
+                  We speak human to human. The focus is always on your goals, practical daily relief, and genuine emotional resilience. No confusing clinical jargon—just straightforward, empathetic care.
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
-          <div className="mt-16 border-t border-border/60 pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="mt-16 max-w-5xl mx-auto border-t border-border/60 pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div>
-              <p className="font-serif text-2xl text-earth">Specialised Therapies:</p>
+              <p className="font-serif text-xl text-earth">Specialised Therapies</p>
               <p className="text-sm text-muted-foreground mt-2">
                 Speech Therapy · Occupational Therapy · Art Therapy · Music Therapy · Dance & Movement · Reminiscence
               </p>
             </div>
-            <Link to="/services" className="text-sm font-medium hover:text-primary transition-colors flex items-center shrink-0">
-              Explore Services <ArrowRight className="h-4 w-4 ml-1.5" />
-            </Link>
+            <Button asChild variant="outline" className="rounded-full shrink-0">
+              <Link to="/services">
+                Explore Services <ArrowRight className="h-4 w-4 ml-1.5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
