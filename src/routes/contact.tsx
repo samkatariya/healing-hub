@@ -33,7 +33,7 @@ function ContactPage() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-5 lg:px-8 space-y-12">
           {/* 5 IMMEDIATE ACTIONS GRID */}
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2">
             {/* 1. BOOK A SESSION */}
             <div className="rounded-2xl border border-primary/50 bg-sage-soft/40 p-6 flex flex-col justify-between shadow-xs">
               <div>
@@ -68,20 +68,20 @@ function ContactPage() {
               </Button>
             </div>
 
-            {/* 3. CALL MAIN PRACTICE */}
+            {/* 3. EMAIL */}
             <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between shadow-xs hover:border-primary/50 transition-all">
               <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Phone className="h-5 w-5" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-soft text-primary">
+                  <Mail className="h-5 w-5" />
                 </div>
-                <h2 className="mt-4 font-serif text-2xl text-earth">Call Healing Emotions</h2>
+                <h2 className="mt-4 font-serif text-2xl text-earth">Email Inquiries</h2>
                 <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                  Speak directly with the team. Main practice helpline for quick telephone guidance.
+                  For administrative questions, official hospital letters, and institutional proposals.
                 </p>
               </div>
               <Button asChild variant="outline" className="mt-6 rounded-full w-full">
-                <a href={`tel:${contact.phone}`}>
-                  Call {contact.phoneDisplay}
+                <a href={`mailto:${contact.email}`}>
+                  {contact.email}
                 </a>
               </Button>
             </div>
@@ -101,47 +101,6 @@ function ContactPage() {
                 <Link to="/locations">
                   View All Locations <ArrowRight className="h-4 w-4 ml-1" />
                 </Link>
-              </Button>
-            </div>
-
-            {/* 5. ONLINE CONSULTATION */}
-            <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between shadow-xs hover:border-primary/50 transition-all">
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-soft text-primary">
-                  <Video className="h-5 w-5" />
-                </div>
-                <h2 className="mt-4 font-serif text-2xl text-earth">Online Consultation</h2>
-                <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                  Secure video consultations from anywhere in India or internationally via private link.
-                </p>
-              </div>
-              <Button
-                variant="outline"
-                className="mt-6 rounded-full w-full"
-                onClick={() => {
-                  setSelectedLocation("Online Consultation");
-                  setBookingOpen(true);
-                }}
-              >
-                Book Online Video
-              </Button>
-            </div>
-
-            {/* 6. EMAIL */}
-            <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between shadow-xs hover:border-primary/50 transition-all">
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-soft text-primary">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <h2 className="mt-4 font-serif text-2xl text-earth">Email Inquiries</h2>
-                <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                  For administrative questions, official hospital letters, and institutional proposals.
-                </p>
-              </div>
-              <Button asChild variant="outline" className="mt-6 rounded-full w-full">
-                <a href={`mailto:${contact.email}`}>
-                  {contact.email}
-                </a>
               </Button>
             </div>
           </div>

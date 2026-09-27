@@ -65,8 +65,14 @@ function HomePage() {
   return (
     <>
       {/* 1. HERO SECTION */}
-      <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-earth py-20 sm:py-28">
-        <div className="relative mx-auto w-full max-w-7xl px-5 text-primary-foreground lg:px-8">
+      <section className="relative flex min-h-screen items-end overflow-hidden">
+        <img
+          src={therapyRoom}
+          alt="A calm, welcoming clinical space"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-earth/95 via-earth/70 to-earth/20" />
+        <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-40 text-primary-foreground lg:px-8 lg:pb-32">
           <div className="max-w-3xl">
             <span className="text-xs font-medium uppercase tracking-widest text-primary-foreground/70">
               Healing Emotions
@@ -108,51 +114,52 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whatBringsYouHereOptions.map((opt) => (
-              <div key={opt.id} className="flex flex-col group">
-                <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+              <div key={opt.id} className="flex flex-col group rounded-2xl border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/30">
+                <span className="text-[11px] font-semibold text-primary uppercase tracking-widest">
                   {opt.lead}
                 </span>
-                <h3 className="mt-3 font-serif text-2xl text-earth group-hover:text-primary transition-colors">
+                <h3 className="mt-4 font-serif text-2xl text-earth">
                   {opt.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground flex-1">
+                <p className="mt-4 text-sm leading-6 text-muted-foreground flex-1">
                   {opt.desc}
                 </p>
-                <div className="mt-6 flex items-center gap-4">
-                  <button
+                <div className="mt-8 flex items-center gap-4">
+                  <Button
                     onClick={() => triggerBook(opt.category, opt.supportType)}
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+                    className="flex-1 font-semibold rounded-full"
                   >
-                    Book session
-                  </button>
-                  <span className="text-border">|</span>
-                  <Link to={opt.route} className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
-                    Details
-                  </Link>
+                    Book Session
+                  </Button>
+                  <Button asChild variant="outline" className="flex-1 rounded-full font-medium">
+                    <Link to={opt.route}>
+                      Details
+                    </Link>
+                  </Button>
                 </div>
               </div>
             ))}
 
             {/* UNCERTAIN CARD -> SIMPLIFIED */}
-            <div className="flex flex-col pt-8 sm:pt-0 sm:pl-8 sm:border-l border-border/50">
-              <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+            <div className="flex flex-col rounded-2xl border border-border/50 bg-sage-soft/30 p-8 shadow-sm transition-all hover:shadow-md">
+              <span className="text-[11px] font-semibold text-primary uppercase tracking-widest">
                 Need Clarity?
               </span>
-              <h3 className="mt-3 font-serif text-2xl text-earth">
+              <h3 className="mt-4 font-serif text-2xl text-earth">
                 Unsure what you need?
               </h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground flex-1">
+              <p className="mt-4 text-sm leading-6 text-muted-foreground flex-1">
                 Start with a 15-minute quick guidance call (₹500) to clarify which specialist or therapy fits best.
               </p>
-              <div className="mt-6">
-                <button
+              <div className="mt-8">
+                <Button
                   onClick={() => triggerBook("Myself", "Quick 15-min Call (₹500)")}
-                  className="text-sm font-medium hover:text-primary transition-colors flex items-center"
+                  className="w-full font-semibold rounded-full bg-earth text-white hover:bg-earth/90"
                 >
                   Book 15-Min Call (₹500) <ArrowRight className="h-4 w-4 ml-1.5" />
-                </button>
+                </Button>
               </div>
             </div>
           </div>

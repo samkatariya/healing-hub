@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, Phone, X, MessageCircle, Instagram, Linkedin, CalendarCheck2 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/healing-emotions-logo.png.asset.json";
 import { contact } from "@/lib/site-data";
@@ -20,34 +20,64 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [bookModalOpen, setBookModalOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isHome = pathname === "/";
+  const isTransparent = isHome && !scrolled && !open;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-xl">
+      <header
+        className={`z-40 transition-colors duration-300 ${
+          isHome ? "fixed top-0 left-0 right-0" : "sticky top-0"
+        } ${
+          isTransparent
+            ? "border-transparent bg-transparent"
+            : "border-b border-border/70 bg-background/95 backdrop-blur-xl"
+        }`}
+      >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
           <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Healing Emotions home">
             <img src={logo.url} alt="" className="h-10 w-10 object-contain" />
-            <span className="font-serif text-xl font-semibold text-earth">Healing Emotions</span>
+            <span className={`font-serif text-xl font-semibold transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-earth'}`}>Healing Emotions</span>
           </Link>
 
           <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
-            {links.map(([label, to]) => (
-              <Link
-                key={to}
-                to={to}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === to ? "text-primary font-semibold" : "text-muted-foreground"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+            {links.map(([label, to]) => {
+              const isActive = pathname === to;
+              let linkClass = "text-sm font-medium transition-colors duration-300 ";
+              if (isTransparent) {
+                linkClass += isActive ? "text-white font-semibold" : "text-white/80 hover:text-white";
+              } else {
+                linkClass += isActive ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary";
+              }
+              return (
+                <Link
+                  key={to}
+                  to={to}
+                  className={linkClass}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
             <Button
               onClick={() => setBookModalOpen(true)}
-              className="rounded-full px-5 shadow-sm font-medium"
+              className={`rounded-full px-5 shadow-sm font-medium transition-colors duration-300 ${
+                isTransparent ? "bg-white text-earth hover:bg-white/90" : ""
+              }`}
             >
               <CalendarCheck2 className="h-4 w-4 mr-1.5" /> Book a Session
             </Button>
@@ -57,7 +87,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Button
               size="sm"
               onClick={() => setBookModalOpen(true)}
-              className="rounded-full px-3.5 text-xs"
+              className={`rounded-full px-3.5 text-xs transition-colors duration-300 ${
+                isTransparent ? "bg-white text-earth hover:bg-white/90" : ""
+              }`}
             >
               Book
             </Button>
@@ -66,6 +98,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               size="icon"
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
+              className={isTransparent ? "text-white hover:bg-white/20 hover:text-white" : ""}
             >
               {open ? <X /> : <Menu />}
             </Button>
