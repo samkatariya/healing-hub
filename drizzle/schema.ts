@@ -101,3 +101,34 @@ export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+export const hospitals = pgTable("hospitals", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  slug: text("slug").notNull().unique(),
+  name: text("name").notNull(),
+  area: text("area").notNull().default(""),
+  address: text("address").notNull().default(""),
+  phone: text("phone").notNull().default(""),
+  timings: text("timings").notNull().default(""),
+  mapQuery: text("map_query").notNull().default(""),
+  services: text("services").notNull().default(""),
+  active: boolean("active").notNull().default(true),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const bookingRequests = pgTable("booking_requests", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  segment: text("segment").notNull(),
+  specialist: text("specialist").notNull(),
+  visitMode: text("visit_mode").notNull(),
+  hospitalSlug: text("hospital_slug"),
+  name: text("name").notNull(),
+  phone: text("phone").notNull(),
+  area: text("area"),
+  preferredTime: text("preferred_time"),
+  notes: text("notes"),
+  status: text("status").notNull().default("new"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

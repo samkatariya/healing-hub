@@ -5,6 +5,8 @@ import journalReflection from "@/assets/journal-reflection.jpg";
 export const contact = {
   phone: "+919158011716",
   phoneDisplay: "+91 91580 11716",
+  phone2: "+919168611716",
+  phone2Display: "+91 91686 11716",
   whatsapp: "https://wa.me/919158011716?text=Hello%20Healing%20Emotions%2C%20I%27d%20like%20to%20book%20a%20session.",
   email: "healingemotions.co@gmail.com",
 };
@@ -22,7 +24,16 @@ export interface HospitalLocation {
   phone: string;
   mapsUrl: string;
   services: string[];
+  address?: string;
+  timings?: string;
 }
+
+/** Placeholder until each hospital's confirmed visiting hours are provided. */
+export const DEFAULT_TIMINGS = "Mon–Sat, 10:00 AM – 6:00 PM (by appointment)";
+
+/** Replace with the real online booking page (e.g. Calendly) when available. */
+export const ONLINE_BOOKING_URL = "";
+
 
 export const hospitalLocations: HospitalLocation[] = [
   {
@@ -66,27 +77,27 @@ export const hospitalLocations: HospitalLocation[] = [
     services: ["Adult & Couple Support", "Reminiscence Therapy", "Clinical Support"],
   },
   {
-    id: "lokmudra-meera",
-    name: "Lokmudra Meera Hospital",
+    id: "lopmudra-meera",
+    name: "Lopmudra Meera Hospital",
     area: "Swargate, Pune",
     phone: "+91 91580 11716",
-    mapsUrl: "https://maps.google.com/?q=Lokmudra+Meera+Hospital+Swargate+Pune",
+    mapsUrl: "https://maps.google.com/?q=Lopmudra+Meera+Hospital+Swargate+Pune",
     services: ["Psychotherapy", "Couple & Family Support", "Assessments"],
   },
   {
-    id: "lokmudra-bavdhan",
-    name: "Lokmudra Hospital",
+    id: "lopmudra-bavdhan",
+    name: "Lopmudra Hospital",
     area: "Bavdhan, Pune",
     phone: "+91 91580 11716",
-    mapsUrl: "https://maps.google.com/?q=Lokmudra+Hospital+Bavdhan+Pune",
+    mapsUrl: "https://maps.google.com/?q=Lopmudra+Hospital+Bavdhan+Pune",
     services: ["Individual Therapy", "Child Support", "Sports Psychology"],
   },
   {
-    id: "lokmudra-pashan",
-    name: "Lokmudra Hospital",
+    id: "lopmudra-pashan",
+    name: "Lopmudra Hospital",
     area: "Pashan, Pune",
     phone: "+91 91580 11716",
-    mapsUrl: "https://maps.google.com/?q=Lokmudra+Hospital+Pashan+Pune",
+    mapsUrl: "https://maps.google.com/?q=Lopmudra+Hospital+Pashan+Pune",
     services: ["Adult Support", "Specialised Therapies", "Assessments"],
   },
 ];
@@ -239,7 +250,7 @@ export const professionalsList = [
     name: "Child & Adolescent Therapist",
     role: "Child Therapist",
     specialisation: "Developmental Guidance, Behavioural Therapy, Social Skills",
-    locations: "ONP Prime, ONP Lila, Lokmudra Hospitals",
+    locations: "ONP Prime, ONP Lila, Lopmudra Hospitals",
     confirmed: false,
     bio: "Specialised support for children navigating developmental, emotional, and learning milestones in a warm, child-friendly setting.",
   },
@@ -263,7 +274,7 @@ export const professionalsList = [
     name: "Expressive Art Therapist",
     role: "Art Therapist",
     specialisation: "Creative Expression, Emotional Processing, Trauma Relief",
-    locations: "ONP Prime, Lokmudra Meera, Bavdhan",
+    locations: "ONP Prime, Lopmudra Meera, Bavdhan",
     confirmed: false,
     bio: "Gentle non-verbal exploration using visual arts to process complicated feelings when words are not enough.",
   },
@@ -271,7 +282,7 @@ export const professionalsList = [
     name: "Music Therapist",
     role: "Music Therapist",
     specialisation: "Rhythm & Neurologic Relaxation, Mood Regulation, Stress Relief",
-    locations: "Lokmudra Hospitals & Centre",
+    locations: "Lopmudra Hospitals & Centre",
     confirmed: false,
     bio: "Therapeutic music interventions supporting emotional expression, regulation, and cognitive wellbeing.",
   },
