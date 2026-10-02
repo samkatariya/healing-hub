@@ -5,6 +5,8 @@ import journalReflection from "@/assets/journal-reflection.jpg";
 export const contact = {
   phone: "+919158011716",
   phoneDisplay: "+91 91580 11716",
+  phone2: "+919168611716",
+  phone2Display: "+91 91686 11716",
   whatsapp: "https://wa.me/919158011716?text=Hello%20Healing%20Emotions%2C%20I%27d%20like%20to%20book%20a%20session.",
   email: "healingemotions.co@gmail.com",
 };
@@ -22,7 +24,16 @@ export interface HospitalLocation {
   phone: string;
   mapsUrl: string;
   services: string[];
+  address?: string;
+  timings?: string;
 }
+
+/** Placeholder until each hospital's confirmed visiting hours are provided. */
+export const DEFAULT_TIMINGS = "Mon–Sat, 10:00 AM – 6:00 PM (by appointment)";
+
+/** Replace with the real online booking page (e.g. Calendly) when available. */
+export const ONLINE_BOOKING_URL = "";
+
 
 export const hospitalLocations: HospitalLocation[] = [
   {
