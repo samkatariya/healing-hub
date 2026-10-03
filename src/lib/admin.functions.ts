@@ -106,12 +106,44 @@ export const deleteContent = createServerFn({ method: "POST" })
   .inputValidator((input) =>
     z
       .object({
-        table: z.enum(["articles", "services", "programs", "faqs", "testimonials"]),
+        table: z.enum(["articles", "services", "programs", "faqs", "testimonials", "hospitals", "booking_requests"]),
         id: z.string().uuid(),
       })
       .parse(input),
   )
   .handler(async ({ data, context }) => {
     await (await adminRepo(context)).deleteContent(data.table, data.id);
+    return { ok: true };
+  });
+
+const hospitalSchema = z.object({
+  id: z.string().uuid().optional(),
+  slug: z.string().min(2).max(80).regex(/^[a-z0-9-]+$/),
+  name: z.string().min(2).max(150),
+  area: z.string().max(200),
+  address: z.string().max(400),
+  phone: z.string().max(40),
+  timings: z.string().max(300),
+  map_query: z.string().max(300),
+  services: z.string().max(500),
+  active: z.boolean(),
+  sort_order: z.number().int(),
+});
+
+export const saveHospital = createServerFn({ method: "POST" })
+  .middleware([requireAuth])
+  .inputValidator((input) => hospitalSchema.parse(input))
+  .handler(async ({ data, context }) => {
+    await (await adminRepo(context)).saveHospital(data);
+    return { ok: true };
+  });
+
+export const setBookingStatus = createServerFn({ method: "POST" })
+  .middleware([requireAuth])
+  .inputValidator((input) =>
+    z.object({ id: z.string().uuid(), status: z.enum(["new", "contacted", "booked", "closed"]) }).parse(input),
+  )
+  .handler(async ({ data, context }) => {
+    await (await adminRepo(context)).setBookingStatus(data.id, data.status);
     return { ok: true };
   });

@@ -11,7 +11,20 @@ import type {
   PublicContent,
   Row,
   SimpleTable,
+  Hospital,
+  HospitalInput,
+  BookingRequestInput,
 } from './types';
+
+type HospitalRow = typeof schema.hospitals.$inferSelect;
+const toHospital = (h: HospitalRow): Hospital => ({
+  id: h.id, slug: h.slug, name: h.name, area: h.area, address: h.address, phone: h.phone,
+  timings: h.timings, map_query: h.mapQuery, services: h.services, active: h.active, sort_order: h.sortOrder,
+});
+const fromHospital = (h: HospitalInput) => ({
+  slug: h.slug, name: h.name, area: h.area, address: h.address, phone: h.phone,
+  timings: h.timings, mapQuery: h.map_query, services: h.services, active: h.active, sortOrder: h.sort_order,
+});
 
 // Create the database connection
 function getDb() {
@@ -59,6 +72,21 @@ export function createDrizzleContentRepository(): ContentRepository {
       if (!article) throw new Error("Article not found");
       return article as Row;
     },
+    async getHospitals() {
+      const rows = await getDb().query.hospitals.findMany({
+        where: eq(schema.hospitals.active, true),
+        orderBy: [asc(schema.hospitals.sortOrder)],
+      });
+      return rows.map(toHospital);
+    },
+    async createBookingRequest(input: BookingRequestInput) {
+      const [row] = await getDb().insert(schema.bookingRequests).values({
+        segment: input.segment, specialist: input.specialist, visitMode: input.visit_mode,
+        hospitalSlug: input.hospital_slug, name: input.name, phone: input.phone, area: input.area,
+        preferredTime: input.preferred_time, notes: input.notes,
+      }).returning({ id: schema.bookingRequests.id });
+      return { id: row!.id };
+    },
   };
 }
 
@@ -85,6 +113,16 @@ export function createDrizzleAdminRepository(
           db.query.categories.findMany({ orderBy: [desc(schema.categories.updatedAt)] }),
           db.query.siteSettings.findMany({ orderBy: [asc(schema.siteSettings.key)] }),
         ]);
+      const [hospitalRows, bookingRows] = await Promise.all([
+        db.query.hospitals.findMany({ orderBy: [asc(schema.hospitals.sortOrder)] }),
+        db.query.bookingRequests.findMany({ orderBy: [desc(schema.bookingRequests.createdAt)], limit: 200 }),
+      ]);
+      const hospitals = hospitalRows.map(toHospital);
+      const booking_requests = bookingRows.map((b) => ({
+        id: b.id, segment: b.segment, specialist: b.specialist, visit_mode: b.visitMode,
+        hospital_slug: b.hospitalSlug, name: b.name, phone: b.phone, area: b.area,
+        preferred_time: b.preferredTime, notes: b.notes, status: b.status, created_at: b.createdAt.toISOString(),
+      }));
 
       return {
         articles,
@@ -94,6 +132,8 @@ export function createDrizzleAdminRepository(
         faqs,
         testimonials,
         site_settings,
+        hospitals,
+        booking_requests,
       } as unknown as AdminContent;
     },
     async saveArticle(input: ArticleInput, authorId: string): Promise<Row> {
@@ -131,8 +171,19 @@ export function createDrizzleAdminRepository(
         await db.insert(schemaTable).values(values);
       }
     },
+    async saveHospital(input: HospitalInput) {
+      if (input.id) {
+        await db.update(schema.hospitals).set({ ...fromHospital(input), updatedAt: new Date() }).where(eq(schema.hospitals.id, input.id));
+      } else {
+        await db.insert(schema.hospitals).values(fromHospital(input));
+      }
+    },
+    async setBookingStatus(id: string, status: string) {
+      await db.update(schema.bookingRequests).set({ status }).where(eq(schema.bookingRequests.id, id));
+    },
     async deleteContent(table: DeletableTable, id: string) {
-      const schemaTable = schema[table as keyof typeof schema] as any;
+      const map: Record<string, unknown> = { hospitals: schema.hospitals, booking_requests: schema.bookingRequests };
+      const schemaTable = (map[table] ?? schema[table as keyof typeof schema]) as any;
       await db.delete(schemaTable).where(eq(schemaTable.id, id));
     },
   };
