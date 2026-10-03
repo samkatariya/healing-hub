@@ -169,6 +169,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <a href={`tel:${contact.phone}`} className="hover:text-primary font-medium text-foreground">
                 {contact.phoneDisplay}
               </a>
+              <a href={`tel:${contact.phone2}`} className="hover:text-primary font-medium text-foreground">
+                {contact.phone2Display}
+              </a>
               <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="hover:text-primary">
                 WhatsApp Practice Desk
               </a>
