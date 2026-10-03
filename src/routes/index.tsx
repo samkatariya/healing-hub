@@ -1,3 +1,6 @@
+import bgPeople from "@/assets/bg-people.jpg";
+import bgTherapies from "@/assets/bg-therapies.jpg";
+import { wellnessServices } from "@/lib/booking-config";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
@@ -102,7 +105,9 @@ function HomePage() {
       </section>
 
       {/* 2. WHAT BRINGS YOU HERE? (MAIN FUNNEL) */}
-      <section className="py-24 sm:py-32 border-b border-border/50 bg-background">
+      <section className="relative isolate overflow-hidden py-24 sm:py-32 border-b border-border/50 bg-background">
+        <img src={bgPeople} alt="" aria-hidden loading="lazy" width={1600} height={912} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/70 via-background/85 to-background" aria-hidden />
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl text-center sm:text-left mx-auto sm:mx-0">
             <h2 className="font-serif text-3xl sm:text-5xl text-earth leading-[1.1]">
@@ -161,6 +166,29 @@ function HomePage() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WELLNESS SERVICES WE PROVIDE */}
+      <section className="relative isolate overflow-hidden border-b border-border/50 py-24 sm:py-32">
+        <img src={bgTherapies} alt="" aria-hidden loading="lazy" width={1600} height={912} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/85 to-background" aria-hidden />
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">Under one roof</span>
+            <h2 className="mt-4 font-serif text-3xl sm:text-5xl text-earth leading-[1.1]">Wellness services we provide</h2>
+            <p className="mt-5 text-base sm:text-lg leading-7 text-muted-foreground">Different therapies, one team. Here is what each one does and who it helps.</p>
+          </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {wellnessServices.map((w) => (
+              <button key={w.title} type="button" onClick={() => triggerBook("", w.title)} className="flex flex-col rounded-2xl border border-border/60 bg-card/90 p-7 text-left backdrop-blur-sm transition-colors hover:border-primary">
+                <h3 className="font-serif text-xl text-earth">{w.title}</h3>
+                <p className="mt-2 text-[11px] font-semibold uppercase tracking-widest text-primary">For {w.forWhom}</p>
+                <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground">{w.how}</p>
+                <span className="mt-6 inline-flex items-center text-sm font-medium text-earth">Book <ArrowRight className="ml-1 h-4 w-4" /></span>
+              </button>
+            ))}
           </div>
         </div>
       </section>
