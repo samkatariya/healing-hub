@@ -32,7 +32,7 @@ export type Hospital = {
   id: string; slug: string; name: string; area: string; address: string; phone: string;
   timings: string; map_query: string; services: string; active: boolean; sort_order: number;
 };
-export type HospitalInput = Omit<Hospital, "id"> & { id?: string };
+export type HospitalInput = Omit<Hospital, "id"> & { id?: string | undefined };
 
 export type BookingRequestInput = {
   segment: string; specialist: string; visit_mode: "clinic" | "home" | "online";

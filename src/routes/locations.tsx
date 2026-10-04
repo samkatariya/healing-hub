@@ -85,7 +85,7 @@ function LocationsPage() {
         </div>
       </section>
 
-      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} defaultLocation={selected || undefined} />
+      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} defaultLocation={selected} />
     </>
   );
 }

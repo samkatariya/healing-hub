@@ -106,8 +106,8 @@ function HomePage() {
 
       {/* 2. WHAT BRINGS YOU HERE? (MAIN FUNNEL) */}
       <section className="relative isolate overflow-hidden py-24 sm:py-32 border-b border-border/50 bg-background">
-        <img src={bgPeople} alt="" aria-hidden loading="lazy" width={1600} height={912} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/70 via-background/85 to-background" aria-hidden />
+        <img src={bgPeople} alt="" aria-hidden loading="lazy" width={1600} height={912} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-50" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" aria-hidden />
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl text-center sm:text-left mx-auto sm:mx-0">
             <h2 className="font-serif text-3xl sm:text-5xl text-earth leading-[1.1]">
@@ -172,8 +172,8 @@ function HomePage() {
 
       {/* WELLNESS SERVICES WE PROVIDE */}
       <section className="relative isolate overflow-hidden border-b border-border/50 py-24 sm:py-32">
-        <img src={bgTherapies} alt="" aria-hidden loading="lazy" width={1600} height={912} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/85 to-background" aria-hidden />
+        <img src={bgTherapies} alt="" aria-hidden loading="lazy" width={1600} height={912} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/70 to-background/90" aria-hidden />
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">Under one roof</span>

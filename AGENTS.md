@@ -44,3 +44,8 @@
   - Keep server functions isolated to server-only code (use dynamic imports or `.server.ts` where necessary to avoid client bundle leakage).
   - Preserve error logging and monitoring utilities (`src/lib/error-capture.ts`, `src/lib/lovable-error-reporting.ts`).
   - Follow the calm, minimal, high-whitespace aesthetic with earth/sage palette tokens.
+
+## 5. Booking & Hospitals
+- Hospitals and booking requests live in Drizzle tables (`hospitals`, `booking_requests`, migration 0003); public reads go through `getHospitals`, which falls back to `site-data.ts` so the site works before the migration runs.
+- Per-segment booking options and wellness services are configured in `src/lib/booking-config.ts` — edit there, not in components.
+- Maps use keyless Google embed iframes (`HospitalMap`) to avoid API keys and usage cost.
