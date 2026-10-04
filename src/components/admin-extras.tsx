@@ -10,7 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-type Row = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Row = any;
 const empty = { slug: "", name: "", area: "", address: "", phone: "", timings: "", map_query: "", services: "", active: true, sort_order: 0 };
 
 export function HospitalsPanel({ rows, onChanged }: { rows: Row[]; onChanged: () => Promise<void> }) {
