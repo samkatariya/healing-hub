@@ -24,7 +24,7 @@ export function HospitalsPanel({ rows, onChanged }: { rows: Row[]; onChanged: ()
     try {
       const { id, ...rest } = edit;
       const values = Object.fromEntries(Object.keys(empty).map((k) => [k, rest[k] ?? (empty as Row)[k]]));
-      await save({ data: { ...(values as typeof empty), sort_order: Number(values.sort_order) || 0, ...(id ? { id } : {}) } });
+      await save({ data: { ...(values as typeof empty), sort_order: Number(values["sort_order"]) || 0, ...(id ? { id } : {}) } });
       toast.success("Hospital saved"); setEdit(null); await onChanged();
     } catch (e) { toast.error(e instanceof Error ? e.message : "Could not save"); }
   }
