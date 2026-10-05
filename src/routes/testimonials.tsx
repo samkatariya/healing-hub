@@ -40,7 +40,7 @@ function TestimonialsPage() {
       `• Context/Service: ${context || "Not specified"}\n` +
       `• Experience: ${quote}`
     );
-    window.open(`https://wa.me/919158011716?text=${text}`, "_blank");
+    window.open(`https://wa.me/919168611716?text=${text}`, "_blank");
     setSubmitted(true);
   };
 

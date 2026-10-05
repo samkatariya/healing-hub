@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Phone, X, MessageCircle, Instagram, Linkedin, CalendarCheck2 } from "lucide-react";
+import { Menu, X, MessageCircle, Instagram, Linkedin, CalendarCheck2, ShieldAlert } from "lucide-react";
 import { useState, useEffect, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/healing-logo.png";
@@ -169,9 +169,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <a href={`tel:${contact.phone}`} className="hover:text-primary font-medium text-foreground">
                 {contact.phoneDisplay}
               </a>
-              <a href={`tel:${contact.phone2}`} className="hover:text-primary font-medium text-foreground">
-                {contact.phone2Display}
-              </a>
               <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="hover:text-primary">
                 WhatsApp Practice Desk
               </a>
@@ -185,7 +182,16 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center sm:items-start text-center sm:text-left gap-4 border-t border-border/50 px-5 pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
+        <div className="mx-auto mt-12 max-w-7xl border-t border-border/50 px-5 pt-8 lg:px-8">
+          <div className="flex max-w-3xl items-start gap-3 text-left text-xs leading-5 text-muted-foreground">
+            <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <p>
+              If you or someone you know is in immediate crisis, confidential 24/7 support is available through Tele-MANAS at <a href="tel:14416" className="font-semibold text-foreground hover:text-primary">14416</a>. Healing Emotions is not an emergency service.
+            </p>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center sm:items-start text-center sm:text-left gap-4 border-t border-border/50 px-5 pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between lg:px-8">
           <span>© 2026 Healing Emotions. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5">
             <Link to="/first-session" className="hover:text-primary transition-colors">First Session</Link>
