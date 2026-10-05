@@ -29,6 +29,13 @@
       "when": 1791000000000,
       "tag": "0003_hospitals_and_booking_requests",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1791196800000,
+      "tag": "0004_update_contact_number",
+      "breakpoints": true
     }
   ]
 }
