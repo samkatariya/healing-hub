@@ -91,7 +91,7 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
         `• For: ${segment?.label ?? ""}\n• Specialist: ${specialist}\n• Where: ${where}\n` +
         `• Name: ${name}\n• Phone: ${phone}\n• Preferred time: ${preferredTime || "Flexible"}`,
     );
-    return `https://wa.me/919158011716?text=${text}`;
+    return `https://wa.me/919168611716?text=${text}`;
   };
 
   async function handleSubmit(e: React.FormEvent) {
@@ -274,10 +274,7 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
                 <Button asChild size="lg" className="w-full rounded-full">
                   <a href={whatsappUrl()} target="_blank" rel="noreferrer"><MessageCircle className="mr-2 h-5 w-5" />Send on WhatsApp</a>
                 </Button>
-                <div className="grid grid-cols-2 gap-3">
-                  <Button asChild variant="outline" className="rounded-full"><a href={`tel:${contact.phone}`}><Phone className="mr-1.5 h-4 w-4" />{contact.phoneDisplay}</a></Button>
-                  <Button asChild variant="outline" className="rounded-full"><a href={`tel:${contact.phone2}`}><Phone className="mr-1.5 h-4 w-4" />{contact.phone2Display}</a></Button>
-                </div>
+                <Button asChild variant="outline" className="w-full rounded-full"><a href={`tel:${contact.phone}`}><Phone className="mr-1.5 h-4 w-4" />Call {contact.phoneDisplay}</a></Button>
               </div>
               <button type="button" onClick={close} className="text-xs text-muted-foreground underline">Close</button>
             </div>

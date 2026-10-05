@@ -66,10 +66,7 @@ function ContactPage() {
                   Open WhatsApp Chat
                 </a>
               </Button>
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                <Button asChild variant="outline" size="sm" className="rounded-full"><a href={`tel:${contact.phone}`}><Phone className="mr-1 h-3.5 w-3.5" />{contact.phoneDisplay}</a></Button>
-                <Button asChild variant="outline" size="sm" className="rounded-full"><a href={`tel:${contact.phone2}`}><Phone className="mr-1 h-3.5 w-3.5" />{contact.phone2Display}</a></Button>
-              </div>
+              <Button asChild variant="outline" size="sm" className="mt-3 w-full rounded-full"><a href={`tel:${contact.phone}`}><Phone className="mr-1 h-3.5 w-3.5" />{contact.phoneDisplay}</a></Button>
             </div>
 
             {/* 3. EMAIL */}

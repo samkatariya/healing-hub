@@ -64,7 +64,7 @@ function ForOrganizationsPage() {
       `• Phone: ${phone || "Not specified"}\n` +
       `• Requirements: ${needs || "Corporate Wellness / EAP / Training"}`
     );
-    window.open(`https://wa.me/919158011716?text=${text}`, "_blank");
+    window.open(`https://wa.me/919168611716?text=${text}`, "_blank");
   };
 
   return (
