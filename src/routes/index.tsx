@@ -120,7 +120,7 @@ function HomePage() {
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whatBringsYouHereOptions.map((opt) => (
-              <div key={opt.id} className="flex flex-col items-center text-center sm:items-start sm:text-left group cursor-pointer rounded-3xl border border-border/40 bg-card p-10 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => triggerBook(opt.category, opt.supportType)}>
+              <div key={opt.id} className="flex flex-col items-center text-center sm:items-start sm:text-left group cursor-pointer rounded-2xl shadow-sm hover:shadow-md border border-border/40 bg-card p-10 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => triggerBook(opt.category, opt.supportType)}>
                 <span className="text-[11px] font-semibold text-primary uppercase tracking-widest group-hover:text-earth/80 transition-colors">
                   {opt.lead}
                 </span>
@@ -147,7 +147,7 @@ function HomePage() {
             ))}
 
             {/* UNCERTAIN CARD -> SIMPLIFIED */}
-            <div className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl cursor-pointer border border-sage-soft/60 bg-sage-soft/20 p-10 transition-colors hover:bg-sage-soft/40 active:opacity-70 active:duration-0" onClick={() => triggerBook("Myself", "Quick 15-min Call (₹500)")}>
+            <div className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md cursor-pointer border border-sage-soft/60 bg-sage-soft/20 p-10 transition-colors hover:bg-sage-soft/40 active:opacity-70 active:duration-0" onClick={() => triggerBook("Myself", "Quick 15-min Call (₹500)")}>
               <span className="text-[11px] font-semibold text-primary uppercase tracking-widest">
                 Need Clarity?
               </span>
@@ -367,7 +367,7 @@ function HomePage() {
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {hospitalLocations.slice(0, 4).map((h) => (
-              <div key={h.id} className="flex flex-col items-center text-center sm:items-start sm:text-left cursor-pointer group rounded-3xl bg-card border border-border/40 p-8 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => triggerBook(undefined, undefined, h.name)}>
+              <div key={h.id} className="flex flex-col items-center text-center sm:items-start sm:text-left cursor-pointer group rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-8 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => triggerBook(undefined, undefined, h.name)}>
                 <div className="flex flex-col items-center sm:items-start">
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-primary">
                     <MapPin className="h-3 w-3" />
@@ -478,7 +478,7 @@ function HomePage() {
           </div>
 
           <div className="mt-16 grid gap-x-12 gap-y-16 md:grid-cols-3">
-            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
+            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
               <div className="flex text-amber-500 mb-6 gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
@@ -492,7 +492,7 @@ function HomePage() {
               </footer>
             </blockquote>
 
-            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
+            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
               <div className="flex text-amber-500 mb-6 gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
@@ -506,7 +506,7 @@ function HomePage() {
               </footer>
             </blockquote>
 
-            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
+            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
               <div className="flex text-amber-500 mb-6 gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
@@ -526,7 +526,7 @@ function HomePage() {
       {/* 8. FOR ORGANIZATIONS TEASER */}
       <section className="py-24 sm:py-32 bg-blue-50/40 border-b border-border/50">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 bg-white p-10 sm:p-16 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 bg-white p-10 sm:p-16 rounded-2xl shadow-sm hover:shadow-md border border-blue-100  relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
             <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none -mr-16 -mt-16 group-hover:scale-105 transition-transform duration-700">
                <Building2 className="w-96 h-96 text-blue-900" />
             </div>

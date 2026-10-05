@@ -81,7 +81,7 @@ function ForOrganizationsPage() {
             {orgOfferings.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="group cursor-pointer flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => setModalOpen(true)}>
+                <div key={item.title} className="group cursor-pointer flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => setModalOpen(true)}>
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/5 mb-6 transition-colors">
                     <Icon className="h-6 w-6 text-primary group-hover:text-earth/80 transition-colors" />
                   </div>
@@ -91,7 +91,7 @@ function ForOrganizationsPage() {
               );
             })}
 
-            <div className="sm:col-span-2 lg:col-span-1 flex flex-col justify-center items-center text-center sm:items-start sm:text-left rounded-3xl bg-sage-soft/20 border border-sage-soft/60 p-10 cursor-pointer transition-colors hover:bg-sage-soft/40 active:opacity-70 active:duration-0" onClick={() => setModalOpen(true)}>
+            <div className="sm:col-span-2 lg:col-span-1 flex flex-col justify-center items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-sage-soft/20 border border-sage-soft/60 p-10 cursor-pointer transition-colors hover:bg-sage-soft/40 active:opacity-70 active:duration-0" onClick={() => setModalOpen(true)}>
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">Direct Discussion</span>
               <h2 className="mt-3 font-serif text-2xl text-earth">Custom Requirement?</h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
@@ -108,7 +108,7 @@ function ForOrganizationsPage() {
             </div>
           </div>
 
-          <div className="mt-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12 bg-white p-10 sm:p-16 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
+          <div className="mt-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12 bg-white p-10 sm:p-16 rounded-2xl shadow-sm hover:shadow-md border border-blue-100  relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
             <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none -mr-16 -mt-16 group-hover:scale-105 transition-transform duration-700">
                <Building2 className="w-96 h-96 text-blue-900" />
             </div>

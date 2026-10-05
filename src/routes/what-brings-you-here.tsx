@@ -40,7 +40,7 @@ function WhatBringsYouHerePage() {
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <div className="grid gap-x-12 gap-y-16 md:grid-cols-2">
             {whatBringsYouHereOptions.map((opt) => (
-              <div key={opt.id} className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 cursor-pointer transition-colors hover:border-earth/30 active:opacity-70 active:duration-0 group" onClick={() => handleQuickBook(opt.category, opt.supportType)}>
+              <div key={opt.id} className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 cursor-pointer transition-colors hover:border-earth/30 active:opacity-70 active:duration-0 group" onClick={() => handleQuickBook(opt.category, opt.supportType)}>
                 <div className="flex flex-col items-center sm:items-start">
                   <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                     {opt.lead}

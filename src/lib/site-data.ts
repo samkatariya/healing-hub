@@ -47,9 +47,9 @@ export const hospitalLocations: HospitalLocation[] = [
   {
     id: "onp-lila",
     name: "ONP Lila Hospital",
-    area: "Pimpri-Saudagar, Pune",
+    area: "Pimple Saudagar, Pune",
     phone: "+91 91580 11716",
-    mapsUrl: "https://maps.google.com/?q=ONP+Lila+Hospital+Pimpri+Pune",
+    mapsUrl: "https://maps.google.com/?q=ONP+Lila+Hospital+Pimple+Saudagar+Pune",
     services: ["Adult Counselling", "Child Therapy", "Family Support", "Speech & OT"],
   },
   {

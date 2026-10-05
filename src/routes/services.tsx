@@ -44,7 +44,7 @@ function ServicesPage() {
                 <DialogTrigger asChild>
                   <div
                     id={svc.slug}
-                    className="group cursor-pointer flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl border border-border/40 bg-card p-10 transition-colors hover:border-earth/30 active:opacity-70 scroll-mt-28"
+                    className="group cursor-pointer flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md border border-border/40 bg-card p-10 transition-colors hover:border-earth/30 active:opacity-70 scroll-mt-28"
                   >
                     <h2 className="font-serif text-2xl text-earth">{svc.title}</h2>
                     <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary group-hover:text-earth/80 transition-colors">{svc.summary}</p>

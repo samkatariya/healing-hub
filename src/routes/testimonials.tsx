@@ -103,7 +103,7 @@ function TestimonialsPage() {
             {displayList.map((t, idx) => (
               <blockquote
                 key={t.id || idx}
-                className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-3xl bg-card border border-border/40 p-10 transition-colors hover:border-earth/30"
+                className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30"
               >
                 <div className="flex text-amber-500 mb-6 gap-1">
                   {[...Array(5)].map((_, i) => (
