@@ -35,6 +35,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <header
+        id="site-header"
         className={`z-40 transition-colors duration-300 ${isHome ? "fixed top-0 left-0 right-0" : "sticky top-0"
           } ${isTransparent
             ? "border-transparent bg-transparent"
@@ -118,7 +119,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
       <main className="flex-1">{children}</main>
 
-      <footer className="border-t border-border bg-background py-16">
+      <footer id="site-footer" className="border-t border-border bg-background py-16">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:grid-cols-2 md:grid-cols-5 lg:px-8 text-center sm:text-left">
           <div className="sm:col-span-2 flex flex-col items-center sm:items-start">
             <div className="flex items-center justify-center sm:justify-start gap-3">
