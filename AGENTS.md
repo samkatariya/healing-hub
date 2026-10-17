@@ -59,6 +59,7 @@
 - **Code Style**:
   - Keep server functions isolated to server-only code (use dynamic imports or `.server.ts` where necessary to avoid client bundle leakage).
   - Preserve error logging and monitoring utilities ([`src/lib/error-capture.ts`](file:///home/samyak/healing-hub/src/lib/error-capture.ts), [`src/lib/lovable-error-reporting.ts`](file:///home/samyak/healing-hub/src/lib/lovable-error-reporting.ts)).
+  - **Typography**: Warm Clinical Authority — Lora for warm, sturdy serif headings (`--font-serif`) and Plus Jakarta Sans for crisp, accessible UI/body copy (`--font-sans`).
 
 ## 7. Journal & Articles
 - Journal recommendations and audience inference live in a shared pure helper ([`src/lib/journal.ts`](file:///home/samyak/healing-hub/src/lib/journal.ts)), while homepage and related-article grids reuse one card component ([`src/components/journal-cards.tsx`](file:///home/samyak/healing-hub/src/components/journal-cards.tsx)) to keep reading flows consistent.
