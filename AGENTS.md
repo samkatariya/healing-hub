@@ -49,3 +49,4 @@
 - Hospitals and booking requests live in Drizzle tables (`hospitals`, `booking_requests`, migration 0003); public reads go through `getHospitals`, which falls back to `site-data.ts` so the site works before the migration runs.
 - Per-segment booking options and wellness services are configured in `src/lib/booking-config.ts` — edit there, not in components.
 - Maps use keyless Google embed iframes (`HospitalMap`) to avoid API keys and usage cost.
+- Journal recommendations and audience inference live in a shared pure helper, while homepage and related-article grids reuse one card component to keep reading flows consistent.

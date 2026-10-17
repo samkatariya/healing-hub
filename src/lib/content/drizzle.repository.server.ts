@@ -2,6 +2,7 @@ import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { eq, desc, asc } from 'drizzle-orm';
 import * as schema from '../../../drizzle/schema';
+import { contact } from '@/lib/site-data';
 import type {
   AdminContent,
   AdminContentRepository,
@@ -18,7 +19,7 @@ import type {
 
 type HospitalRow = typeof schema.hospitals.$inferSelect;
 const toHospital = (h: HospitalRow): Hospital => ({
-  id: h.id, slug: h.slug, name: h.name, area: h.area, address: h.address, phone: h.phone,
+  id: h.id, slug: h.slug, name: h.name, area: h.area, address: h.address, phone: contact.phoneDisplay,
   timings: h.timings, map_query: h.mapQuery, services: h.services, active: h.active, sort_order: h.sortOrder,
 });
 const fromHospital = (h: HospitalInput) => ({

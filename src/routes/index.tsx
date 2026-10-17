@@ -31,6 +31,7 @@ import {
 import therapyRoom from "@/assets/therapy-room.jpg";
 import therapistPortrait from "@/assets/therapist-portrait.jpg";
 import { BookingModal } from "@/components/booking-modal";
+import { HomeJournal } from "@/components/home-journal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -556,6 +557,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <HomeJournal />
 
       {/* 9. FINAL CALL TO ACTION */}
       <section className="py-24 sm:py-32 text-center bg-background">
