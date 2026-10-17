@@ -102,17 +102,67 @@ export const hospitalLocations: HospitalLocation[] = [
 
 export const feeDetails = {
   consultation: [
-    { title: "Individual / Adult", fee: "₹2,000", note: "Standard 50-minute clinical or counselling session" },
-    { title: "Child & Adolescent", fee: "₹2,000", note: "Developmental, behavioural or emotional guidance" },
-    { title: "Couple & Family", fee: "₹3,500", note: "Structured relationship and joint consultation" },
-    { title: "Follow-up Session", fee: "₹2,000", note: "Ongoing therapy and review consultations" },
-    { title: "Quick Discovery Call (15 mins)", fee: "₹500", note: "Brief exploratory guidance to clarify the best approach" },
+    {
+      title: "Individual Session",
+      duration: "50 mins",
+      fee: "₹2,000",
+      note: "Standard 50-minute clinical or counselling session tailored for adults, adolescents, or personal therapy.",
+    },
+    {
+      title: "Couple Session",
+      duration: "1 hr 40 mins",
+      fee: "₹4,000",
+      note: "Structured joint relationship consultation focusing on communication, conflict resolution, and relational intimacy.",
+    },
+    {
+      title: "Family Session",
+      duration: "3–3.5 hrs",
+      capacity: "Up to 4 people",
+      fee: "₹7,000",
+      note: "In-depth systemic family consultation addressing multigenerational communication, behavioral patterns, and family transitions.",
+    },
+    {
+      title: "Parental Guidance",
+      duration: "45–60 mins",
+      fee: "₹2,500",
+      note: "Dedicated consultation for parents navigating developmental, behavioural, learning, and emotional support for children.",
+    },
+    {
+      title: "Guidance Call",
+      duration: "15 mins",
+      fee: "₹500",
+      note: "Brief exploratory guidance call to understand your concerns and recommend the most suitable therapist or modality.",
+    },
   ],
   assessments: [
-    { title: "Adult Psychological Screening", fee: "₹2,500", note: "Standardized mental health and wellbeing screening" },
-    { title: "Child Autism / ADHD / Learning Assessment", fee: "₹3,000", note: "Comprehensive developmental and educational evaluation" },
+    {
+      title: "IQ Assessment",
+      duration: "Standardized Battery",
+      fee: "₹3,500–₹5,000*",
+      note: "Standardised cognitive, intellectual, and aptitude evaluation with comprehensive diagnostic profiling and formal reporting.",
+    },
+    {
+      title: "EQ Assessment",
+      duration: "Standardized Battery",
+      fee: "₹3,000–₹5,000*",
+      note: "Standardised assessment of emotional quotient, emotional regulation, interpersonal functioning, and personality dynamics.",
+    },
   ],
-  assessmentNote: "Assessment fees vary according to the specific protocol and diagnostic battery required.",
+  assessmentNote: "*Assessment fees vary according to the specific diagnostic protocol, age battery, and comprehensive documentation required.",
+  policies: [
+    {
+      title: "Advance Payment Required",
+      description: "All consultation, therapy, and assessment fees must be paid in full in advance to confirm and secure your scheduled appointment slot.",
+    },
+    {
+      title: "By Appointment Only (No Walk-Ins)",
+      description: "To maintain client privacy, clinical sanctity, and zero waiting room crowding, walk-in consultations are strictly not accepted. Every session must be scheduled prior to visiting.",
+    },
+    {
+      title: "Cancellation & No-Show Policy",
+      description: "Therapists reserve dedicated time blocks exclusively for you. Sessions are strictly non-refundable for last-minute cancellations or no-shows without advance notice. Please provide timely advance notice if you need to reschedule.",
+    },
+  ],
 };
 
 export const fallbackServices = [
