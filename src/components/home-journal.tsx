@@ -6,7 +6,7 @@ import { JournalCards } from './journal-cards';
 import { Button } from './ui/button';
 
 export function HomeJournal() {
-  const { data, isPending } = useQuery(publicContentOptions);
+  const { data, isPending } = useQuery({ ...publicContentOptions, retry: false });
   const articles = data?.articles.slice(0, 3) ?? [];
   return <section aria-labelledby="home-journal-title" className="border-b border-border/50 bg-background py-20 sm:py-24">
     <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -18,7 +18,7 @@ export function HomeJournal() {
         </div>
         <Button asChild variant="link" className="self-start px-0"><Link to="/blog">Visit the journal <ArrowRight /></Link></Button>
       </div>
-      {articles.length ? <JournalCards articles={articles} /> : isPending ? <div className="grid gap-8 sm:grid-cols-3" aria-label="Loading reflections">{[1, 2, 3].map(n => <div key={n} className="aspect-[4/3] rounded-lg bg-muted motion-safe:animate-pulse" />)}</div> : <p className="text-sm text-muted-foreground">Our reflections will be here soon.</p>}
+      {articles.length ? <JournalCards articles={articles} /> : isPending ? <div className="grid gap-8 sm:grid-cols-3" aria-label="Loading reflections">{[1, 2, 3].map(n => <div key={n} className="aspect-[4/3] rounded-lg bg-muted motion-safe:animate-pulse" />)}</div> : <p className="text-sm text-muted-foreground">The journal is temporarily unavailable. Please check back soon.</p>}
     </div>
   </section>;
 }
