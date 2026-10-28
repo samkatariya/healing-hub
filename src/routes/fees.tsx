@@ -5,7 +5,7 @@ import {
   ShieldAlert,
   ArrowRight,
   Clock,
-  Users,
+  MapPin,
   CheckCircle2,
 } from "lucide-react";
 import { useState } from "react";
@@ -21,13 +21,13 @@ export const Route = createFileRoute("/fees")({
       {
         name: "description",
         content:
-          "Clear, upfront fees for individual therapy, couple sessions, family consultations, parental guidance, and assessments at Healing Emotions.",
+          "Clear, upfront fees for individual therapy and psychological assessments at Healing Emotions. Online sessions save 25%.",
       },
       { property: "og:title", content: "Healing Emotions Fees & Policies" },
       {
         property: "og:description",
         content:
-          "Transparent fees from ₹500 onward. Advance payment required. By appointment only.",
+          "Transparent fees for individual sessions and assessments. Online sessions ₹1,500. By appointment only.",
       },
     ],
   }),
@@ -63,7 +63,7 @@ function FeesPage() {
                 Therapy & Consultations
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Available in-person at partner hospitals across Pune or online via private video call.
+                Available at partner hospitals across Pune, as a home visit, or online via private video call.
               </p>
             </div>
 
@@ -80,19 +80,20 @@ function FeesPage() {
                         <Clock className="h-3 w-3" />
                         {c.duration}
                       </span>
-                      {"capacity" in c && c.capacity && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-secondary/60 px-2.5 py-0.5 text-xs font-medium text-earth border border-border/60">
-                          <Users className="h-3 w-3" />
-                          {c.capacity}
-                        </span>
-                      )}
+                      <span className="inline-flex items-center gap-1 rounded-full bg-secondary/60 px-2.5 py-0.5 text-xs font-medium text-earth border border-border/60">
+                        <MapPin className="h-3 w-3" />
+                        {c.modes}
+                      </span>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">{c.note}</p>
                   </div>
                   <div className="flex items-center sm:flex-col sm:items-end justify-between gap-3 self-stretch sm:self-auto shrink-0 pt-2 sm:pt-0">
-                    <span className="font-serif text-2xl sm:text-3xl font-semibold text-earth">
-                      {c.fee}
-                    </span>
+                    <div className="text-right">
+                      <span className="font-serif text-2xl sm:text-3xl font-semibold text-earth">
+                        {c.fee}
+                      </span>
+                      <p className="text-xs text-muted-foreground">Online {c.onlineFee}</p>
+                    </div>
                     <Button
                       variant="outline"
                       size="sm"
@@ -105,6 +106,10 @@ function FeesPage() {
                 </div>
               ))}
             </div>
+
+            <p className="mt-6 rounded-xl border border-border/60 bg-muted/30 p-4 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+              {feeDetails.onlineNote}
+            </p>
           </div>
 
           {/* ASSESSMENTS TABLE */}
@@ -114,10 +119,10 @@ function FeesPage() {
                 02. Standardised Assessments
               </span>
               <h2 className="mt-2 font-serif text-3xl sm:text-4xl text-earth">
-                Diagnostic & Psychological Assessments
+                Psychological Assessments
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Structured clinical batteries, developmental profiling, and comprehensive diagnostic evaluations.
+                Standardised clinical batteries, developmental profiling, and comprehensive psychological evaluations.
               </p>
             </div>
 
@@ -138,9 +143,6 @@ function FeesPage() {
                     <p className="text-sm text-muted-foreground leading-relaxed">{a.note}</p>
                   </div>
                   <div className="flex items-center sm:flex-col sm:items-end justify-between gap-3 self-stretch sm:self-auto shrink-0 pt-2 sm:pt-0">
-                    <span className="font-serif text-2xl sm:text-3xl font-semibold text-earth">
-                      {a.fee}
-                    </span>
                     <Button
                       variant="outline"
                       size="sm"

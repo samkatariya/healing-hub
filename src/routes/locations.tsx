@@ -1,20 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ArrowRight, Clock, MapPin, Navigation, Phone } from "lucide-react";
+import { ArrowRight, Clock, MapPin, Navigation, Phone, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/booking-modal";
 import { HospitalMap, directionsUrl } from "@/components/hospital-map";
 import { hospitalsOptions } from "@/lib/content.queries";
+import { HOSPITAL_PRIVACY_REASSURANCE } from "@/lib/site-data";
 
 export const Route = createFileRoute("/locations")({
   head: () => ({
     meta: [
-      { title: "Hospital Locations & Timings — Healing Emotions Pune" },
-      { name: "description", content: "Healing Emotions centres across Pune & PCMC with maps, addresses, phone numbers and visiting hours for each hospital." },
-      { property: "og:title", content: "Healing Emotions Hospital Locations in Pune" },
-      { property: "og:description", content: "Find the nearest centre: map, address, phone and timings for every hospital." },
+      { title: "8 Hospital Locations & Timings in Pune — Healing Emotions" },
+      { name: "description", content: "Explore our 8 hospital centres across Pune & PCMC. Private hospital rooms, unhurried care, and accredited support by appointment." },
+      { property: "og:title", content: "8 Hospital Locations in Pune — Healing Emotions" },
+      { property: "og:description", content: "Find our 8 partner hospital locations across Pune with maps, addresses, phone numbers, and timings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -45,11 +46,21 @@ function LocationsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageIntro
-        title="Our locations"
-        description="Find the centre nearest to you. Each one shows its map, address, phone number and visiting hours."
+        title="Our 8 Hospital Locations"
+        description="Care is available across 8 partner hospital centres in Pune and PCMC, as well as online and at home."
       />
 
-      <section className="py-16 sm:py-20">
+      <section className="py-12 sm:py-16">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8 mb-10 -mt-4 sm:-mt-6">
+          <div className="rounded-2xl border border-primary/25 bg-sage-soft/35 p-5 sm:p-6 text-sm text-earth flex items-start sm:items-center gap-3.5 shadow-xs">
+            <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5 sm:mt-0" />
+            <p className="leading-relaxed text-sm">
+              <span className="font-semibold text-earth">Private & Confidential:</span>{" "}
+              {HOSPITAL_PRIVACY_REASSURANCE} All consultations are scheduled by appointment only to ensure zero waiting room crowding and complete confidentiality.
+            </p>
+          </div>
+        </div>
+
         <div className="mx-auto grid max-w-6xl gap-8 px-5 md:grid-cols-2 lg:px-8">
           {hospitals.map((h) => {
             const q = h.map_query || `${h.name} ${h.area}`;
@@ -57,13 +68,16 @@ function LocationsPage() {
               <article key={h.slug} className="overflow-hidden rounded-2xl border border-border bg-card">
                 <HospitalMap query={q} title={h.name} className="h-56" />
                 <div className="space-y-3 p-6">
-                  <h2 className="font-serif text-2xl text-earth">{h.name}</h2>
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="font-serif text-2xl text-earth">{h.name}</h2>
+                    <span className="text-[11px] font-medium rounded-full bg-sage-soft px-2.5 py-0.5 text-primary">By appointment only</span>
+                  </div>
                   <p className="flex gap-2 text-sm text-muted-foreground"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{h.address}</p>
                   <p className="flex gap-2 text-sm text-muted-foreground"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{h.timings}</p>
                   <a href={`tel:${h.phone.replace(/\s/g, "")}`} className="flex gap-2 text-sm text-muted-foreground hover:text-primary"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{h.phone}</a>
                   {h.services && <p className="text-xs text-muted-foreground">{h.services}</p>}
                   <div className="flex flex-wrap gap-3 pt-2">
-                    <Button size="sm" className="rounded-full" onClick={() => { setSelected(h.slug); setBookingOpen(true); }}>Book here</Button>
+                    <Button size="sm" className="rounded-full" onClick={() => { setSelected(h.slug); setBookingOpen(true); }}>Book session</Button>
                     <Button asChild size="sm" variant="outline" className="rounded-full">
                       <a href={directionsUrl(q)} target="_blank" rel="noreferrer"><Navigation className="mr-1.5 h-4 w-4" />Directions</a>
                     </Button>

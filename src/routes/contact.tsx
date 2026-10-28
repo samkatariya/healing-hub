@@ -108,9 +108,9 @@ function ContactPage() {
 
           {/* HOSPITAL CONTACT DIRECTORY */}
           <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-            <h3 className="font-serif text-2xl text-earth">Partner Hospital Desk Contacts</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Direct hospital centres in Pune and PCMC:
+            <h3 className="font-serif text-2xl text-earth">8 Partner Hospital Desk Contacts</h3>
+            <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Your sessions take place in private hospital rooms, and nothing you share is disclosed outside your care. All visits are by appointment only.
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

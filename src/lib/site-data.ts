@@ -29,6 +29,61 @@ export interface HospitalLocation {
 /** Placeholder until each hospital's confirmed visiting hours are provided. */
 export const DEFAULT_TIMINGS = "Mon–Sat, 10:00 AM – 6:00 PM (by appointment)";
 
+export const HOSPITAL_PRIVACY_REASSURANCE =
+  "Your sessions take place in private hospital rooms, and nothing you share is disclosed outside your care.";
+
+export interface TestimonialItem {
+  id: string;
+  quote: string;
+  attribution: string;
+  context?: string;
+}
+
+export const placeholderTestimonials: TestimonialItem[] = [
+  {
+    id: "testimonial-1",
+    quote:
+      "I nearly didn’t message. I kept telling myself my problems weren’t big enough to bother anyone. The reply was warm and ordinary, nothing dramatic, and that made it easier to just go for the first session.",
+    attribution: "Adult client",
+  },
+  {
+    id: "testimonial-2",
+    quote:
+      "My son had started refusing school and mornings were awful for all of us. Nobody made us feel like bad parents. It took a few weeks, but he is calmer now, and so are we.",
+    attribution: "Parent of a school child",
+  },
+  {
+    id: "testimonial-3",
+    quote:
+      "We still argue sometimes, but differently now. We actually let each other finish a sentence. I came in expecting someone to pick a side, and they never did.",
+    attribution: "Couple sessions",
+  },
+  {
+    id: "testimonial-4",
+    quote:
+      "My mother keeps forgetting things and I didn’t know how to talk to her without losing my patience. The session was gentle, and it was in Marathi so she could follow along. I came out feeling less alone.",
+    attribution: "Daughter of an older family member",
+  },
+  {
+    id: "testimonial-5",
+    quote:
+      "I play cricket at district level and the pressure before matches was getting to me. Learning to slow down and reset between overs sounds simple, but it works for me.",
+    attribution: "Young athlete",
+  },
+  {
+    id: "testimonial-6",
+    quote:
+      "My daughter was nervous about coming, and the therapist let her draw for the first ten minutes. By the third visit she was asking when we were going again.",
+    attribution: "Parent of a young child",
+  },
+  {
+    id: "testimonial-7",
+    quote:
+      "I liked that the fees were written clearly before I even messaged. One less thing to worry about.",
+    attribution: "Adult client",
+  },
+];
+
 /** Replace with the real online booking page (e.g. Calendly) when available. */
 export const ONLINE_BOOKING_URL = "";
 
@@ -106,49 +161,25 @@ export const feeDetails = {
       title: "Individual Session",
       duration: "50 mins",
       fee: "₹2,000",
-      note: "Standard 50-minute clinical or counselling session tailored for adults, adolescents, or personal therapy.",
-    },
-    {
-      title: "Couple Session",
-      duration: "1 hr 40 mins",
-      fee: "₹4,000",
-      note: "Structured joint relationship consultation focusing on communication, conflict resolution, and relational intimacy.",
-    },
-    {
-      title: "Family Session",
-      duration: "3–3.5 hrs",
-      capacity: "Up to 4 people",
-      fee: "₹7,000",
-      note: "In-depth systemic family consultation addressing multigenerational communication, behavioral patterns, and family transitions.",
-    },
-    {
-      title: "Parental Guidance",
-      duration: "45–60 mins",
-      fee: "₹2,500",
-      note: "Dedicated consultation for parents navigating developmental, behavioural, learning, and emotional support for children.",
-    },
-    {
-      title: "Guidance Call",
-      duration: "15 mins",
-      fee: "₹500",
-      note: "Brief exploratory guidance call to understand your concerns and recommend the most suitable therapist or modality.",
+      onlineFee: "₹1,500",
+      modes: "Hospital · Home · Online",
+      note: "Standard 50-minute psychotherapy or counselling session for adults, adolescents, or personal therapy.",
     },
   ],
   assessments: [
     {
       title: "IQ Assessment",
       duration: "Standardized Battery",
-      fee: "₹3,500–₹5,000*",
-      note: "Standardised cognitive, intellectual, and aptitude evaluation with comprehensive diagnostic profiling and formal reporting.",
+      note: "Standardised cognitive, intellectual, and aptitude evaluation with comprehensive profiling and formal reporting.",
     },
     {
       title: "EQ Assessment",
       duration: "Standardized Battery",
-      fee: "₹3,000–₹5,000*",
       note: "Standardised assessment of emotional quotient, emotional regulation, interpersonal functioning, and personality dynamics.",
     },
   ],
-  assessmentNote: "*Assessment fees vary according to the specific diagnostic protocol, age battery, and comprehensive documentation required.",
+  assessmentNote: "Charges may vary based on site. Every assessment includes one session with the psychologist.",
+  onlineNote: "Save 25% on online sessions (₹1,500). Charges may vary based on site.",
   policies: [
     {
       title: "Advance Payment Required",

@@ -27,6 +27,8 @@ import {
   whatBringsYouHereOptions,
   specialisedTherapiesList,
   professionalsList,
+  HOSPITAL_PRIVACY_REASSURANCE,
+  placeholderTestimonials,
 } from "@/lib/site-data";
 import therapyRoom from "@/assets/therapy-room.jpg";
 import therapistPortrait from "@/assets/therapist-portrait.jpg";
@@ -86,7 +88,7 @@ function HomePage() {
             <p className="mt-6 text-lg leading-8 text-white/95 sm:text-xl font-light">
               Emotional & psychological wellness support for children, adults, families and senior citizens.
             </p>
-            
+
             <div className="mt-8 flex items-center justify-center sm:justify-start gap-2 text-white text-sm font-medium bg-black/10 w-fit mx-auto sm:mx-0 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
               <ShieldCheck className="h-4 w-4 text-white" />
               <span>Confidential, compassionate, licensed care.</span>
@@ -355,10 +357,10 @@ function HomePage() {
                 8 Hospital Centres in Pune & PCMC
               </span>
               <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
-                Find a Healing Emotions Location
+                Our Hospital Locations
               </h2>
               <p className="mt-4 text-sm sm:text-base leading-7 text-muted-foreground">
-                Integrated clinical spaces inside reputable hospitals across Pune neighbourhoods.
+                {HOSPITAL_PRIVACY_REASSURANCE} All visits are scheduled by appointment only.
               </p>
             </div>
             <Link to="/locations" className="text-sm font-medium hover:text-primary transition-colors flex items-center justify-center shrink-0">
@@ -367,31 +369,33 @@ function HomePage() {
           </div>
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {hospitalLocations.slice(0, 4).map((h) => (
-              <div key={h.id} className="flex flex-col items-center text-center sm:items-start sm:text-left cursor-pointer group rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-8 transition-colors hover:border-earth/30 active:opacity-70 active:duration-0" onClick={() => triggerBook(undefined, undefined, h.name)}>
-                <div className="flex flex-col items-center sm:items-start">
-                  <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-primary">
-                    <MapPin className="h-3 w-3" />
-                    <span>{h.area}</span>
+            {hospitalLocations.map((h) => (
+              <div
+                key={h.id}
+                className="flex flex-col justify-between rounded-2xl shadow-xs bg-card border border-border/50 p-6 sm:p-7 transition-colors hover:border-earth/30"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 text-[11px] font-semibold uppercase tracking-widest text-primary">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3" />
+                      {h.area}
+                    </span>
                   </div>
-                  <h3 className="mt-3 font-serif text-2xl text-earth">{h.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                  <h3 className="mt-3 font-serif text-xl text-earth">{h.name}</h3>
+                  <p className="mt-2 text-xs text-muted-foreground line-clamp-2">
                     {h.services.join(" · ")}
                   </p>
                 </div>
-                <div className="mt-8 flex-1 flex flex-col justify-end gap-3 w-full border-t border-border/40 pt-4">
-                  <div className="flex items-center justify-center sm:justify-start gap-4">
-                    <button
-                      onClick={(e) => { e.stopPropagation(); triggerBook(undefined, undefined, h.name); }}
-                      className="text-sm font-medium group-hover:text-primary transition-colors"
-                    >
-                      Reach out here
-                    </button>
-                    <span className="text-border">|</span>
-                    <a href={h.mapsUrl} onClick={(e) => e.stopPropagation()} target="_blank" rel="noreferrer" className="text-sm font-medium hover:text-primary transition-colors flex items-center text-muted-foreground">
-                      Maps <ExternalLink className="h-3.5 w-3.5 ml-1" />
-                    </a>
-                  </div>
+                <div className="mt-6 flex items-center justify-between border-t border-border/40 pt-4 text-xs">
+                  <span className="text-muted-foreground font-medium">By appointment</span>
+                  <a
+                    href={h.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-primary hover:underline flex items-center gap-1"
+                  >
+                    Maps <ExternalLink className="h-3 w-3" />
+                  </a>
                 </div>
               </div>
             ))}
@@ -464,13 +468,13 @@ function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <div className="max-w-2xl text-center sm:text-left mx-auto sm:mx-0">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Genuine Feedback
+                Client Reflections
               </span>
               <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
                 What People Say
               </h2>
               <p className="mt-4 text-sm sm:text-base leading-7 text-muted-foreground">
-                Reflections shared with consent by clients and families supported through Healing Emotions.
+                Reflections from people who reached out, took the first step, and found support.
               </p>
             </div>
             <Link to="/testimonials" className="text-sm font-medium hover:text-primary transition-colors flex items-center justify-center shrink-0">
@@ -478,48 +482,20 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-16 grid gap-x-12 gap-y-16 md:grid-cols-3">
-            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
-              <div className="flex text-amber-500 mb-6 gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <p className="font-serif text-lg sm:text-xl leading-relaxed text-earth italic">
-                “Reaching out was the hardest part, but the conversation felt completely respectful and human. There was zero pressure to fit into a clinical diagnosis.”
-              </p>
-              <footer className="mt-8 w-full pt-4 border-t border-border/40 text-sm text-muted-foreground flex justify-center sm:justify-start">
-                Adult Therapy Client · Shivajinagar
-              </footer>
-            </blockquote>
-
-            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
-              <div className="flex text-amber-500 mb-6 gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <p className="font-serif text-lg sm:text-xl leading-relaxed text-earth italic">
-                “Our child’s speech and sensory integration improved steadily because the psychologist and occupational therapist actually communicated with each other.”
-              </p>
-              <footer className="mt-8 w-full pt-4 border-t border-border/40 text-sm text-muted-foreground flex justify-center sm:justify-start">
-                Parent of 6-year-old · Pimpri
-              </footer>
-            </blockquote>
-
-            <blockquote className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md bg-card border border-border/40 p-10 transition-colors hover:border-earth/30">
-              <div className="flex text-amber-500 mb-6 gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <p className="font-serif text-lg sm:text-xl leading-relaxed text-earth italic">
-                “The couple sessions helped us establish clear boundaries and de-escalate circular arguments without taking sides. Truly grateful for the neutral, compassionate space.”
-              </p>
-              <footer className="mt-8 w-full pt-4 border-t border-border/40 text-sm text-muted-foreground flex justify-center sm:justify-start">
-                Couple Consultation · Swargate
-              </footer>
-            </blockquote>
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {placeholderTestimonials.slice(0, 3).map((t) => (
+              <blockquote
+                key={t.id}
+                className="flex flex-col justify-between rounded-2xl shadow-xs bg-card border border-border/50 p-8 sm:p-10 transition-colors hover:border-earth/30"
+              >
+                <p className="font-serif text-base sm:text-lg leading-relaxed text-earth italic">
+                  “{t.quote}”
+                </p>
+                <footer className="mt-8 w-full pt-4 border-t border-border/40 text-sm font-medium text-earth">
+                  {t.attribution}
+                </footer>
+              </blockquote>
+            ))}
           </div>
         </div>
       </section>
@@ -529,7 +505,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 bg-white p-10 sm:p-16 rounded-2xl shadow-sm hover:shadow-md border border-blue-100  relative overflow-hidden group hover:border-blue-200 transition-colors duration-500">
             <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none -mr-16 -mt-16 group-hover:scale-105 transition-transform duration-700">
-               <Building2 className="w-96 h-96 text-blue-900" />
+              <Building2 className="w-96 h-96 text-blue-900" />
             </div>
             <div className="max-w-2xl relative z-10 text-center lg:text-left mx-auto lg:mx-0">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
