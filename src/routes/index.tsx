@@ -30,7 +30,7 @@ import {
   HOSPITAL_PRIVACY_REASSURANCE,
   placeholderTestimonials,
 } from "@/lib/site-data";
-import therapyRoom from "@/assets/therapy-room.jpg";
+import heroWarmClinic from "@/assets/hero-warm-clinic.jpg";
 import therapistPortrait from "@/assets/therapist-portrait.jpg";
 import { BookingModal } from "@/components/booking-modal";
 import { HomeJournal } from "@/components/home-journal";
@@ -74,12 +74,14 @@ function HomePage() {
       {/* 1. HERO SECTION */}
       <section className="relative flex min-h-screen items-end overflow-hidden">
         <img
-          src={therapyRoom}
-          alt="A calm, welcoming clinical space"
-          className="absolute inset-0 h-full w-full object-cover object-top"
+          src={heroWarmClinic}
+          alt="A psychologist and client sharing a warm, reassuring conversation in a bright clinic room"
+          className="absolute inset-0 h-full w-full object-cover object-[72%_center]"
+          width={1920}
+          height={1152}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-earth/95 via-earth/70 to-earth/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-earth/90 via-transparent to-transparent h-48" />
+        <div className="absolute inset-0 bg-gradient-to-t from-earth/95 via-earth/60 to-earth/15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-earth/80 via-transparent to-transparent h-48" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-40 text-primary-foreground lg:px-8 lg:pb-32">
           <div className="max-w-3xl text-center sm:text-left mx-auto sm:mx-0 mt-4">
             <h1 className="font-serif text-5xl leading-[1.08] sm:text-6xl lg:text-7xl font-semibold text-balance mx-auto sm:mx-0 text-white drop-shadow-md">
