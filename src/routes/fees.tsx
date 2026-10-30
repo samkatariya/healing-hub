@@ -47,8 +47,8 @@ function FeesPage() {
     <>
       <PageIntro
         eyebrow="Transparent Investment"
-        title="Clear, upfront fees. No hidden costs."
-        description="We believe in simple, transparent fee structures so you know exactly what to anticipate from your very first conversation."
+        title="Simple, upfront fees."
+        description="Starter fees shown below. Charges may vary based on site."
       />
 
       <section className="py-16 sm:py-24">
@@ -60,7 +60,7 @@ function FeesPage() {
                 01. Consultations & Therapy
               </span>
               <h2 className="mt-2 font-serif text-3xl sm:text-4xl text-earth">
-                Therapy & Consultations
+                Starter Session
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
                 Available at partner hospitals across Pune, as a home visit, or online via private video call.
@@ -119,10 +119,10 @@ function FeesPage() {
                 02. Standardised Assessments
               </span>
               <h2 className="mt-2 font-serif text-3xl sm:text-4xl text-earth">
-                Psychological Assessments
+                IQ & EQ Assessments
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Standardised clinical batteries, developmental profiling, and comprehensive psychological evaluations.
+                Assessment details below. Every assessment includes one session with the psychologist.
               </p>
             </div>
 
@@ -235,28 +235,6 @@ function FeesPage() {
             </div>
           </div>
 
-          {/* CTA BANNER */}
-          <div className="border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-12 bg-sage-soft/20 rounded-2xl p-8 sm:p-12 border">
-            <div className="max-w-xl">
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Begin Here
-              </span>
-              <h3 className="mt-2 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
-                Need guidance deciding which session to choose?
-              </h3>
-              <p className="mt-4 text-base leading-7 text-muted-foreground">
-                All fees listed above are standard across our practice. Start with a quick 15-minute guidance call (₹500) to clarify your concerns and match with the right therapist.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 shrink-0 md:pt-4">
-              <Button
-                onClick={() => handleBookFee("Guidance Call (15 mins)")}
-                className="rounded-full px-6 py-2.5 font-medium shadow-sm hover:shadow-md transition-all"
-              >
-                Schedule Guidance Call (₹500) <ArrowRight className="h-4 w-4 ml-1.5" />
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
 

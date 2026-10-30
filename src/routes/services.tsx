@@ -99,13 +99,13 @@ function ServicesPage() {
           <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
             <div className="max-w-2xl text-center md:text-left mx-auto md:mx-0">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Need Guidance?
+                Guidance
               </span>
               <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-earth leading-[1.1]">
-                Not sure which service matches your exact concern?
+                Request a call or message
               </h3>
               <p className="mt-4 text-base leading-7 text-muted-foreground">
-                You don’t need to self-diagnose. Reach out for a quick 15-minute guidance call or schedule an initial consultation to determine the best therapeutic approach.
+                We will guide you to the right specialist. 15-minute guidance call — ₹500.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-6 shrink-0 mx-auto md:mx-0 justify-center items-center">

@@ -152,13 +152,13 @@ function HomePage() {
             {/* UNCERTAIN CARD -> SIMPLIFIED */}
             <div className="flex flex-col items-center text-center sm:items-start sm:text-left rounded-2xl shadow-sm hover:shadow-md cursor-pointer border border-sage-soft/60 bg-sage-soft/20 p-10 transition-colors hover:bg-sage-soft/40 active:opacity-70 active:duration-0" onClick={() => triggerBook("Myself", "Quick 15-min Call (₹500)")}>
               <span className="text-[11px] font-semibold text-primary uppercase tracking-widest">
-                Need Clarity?
+                Guidance
               </span>
               <h3 className="mt-4 font-serif text-2xl text-earth">
-                Unsure what you need?
+                Request a call or message
               </h3>
               <p className="mt-4 text-sm leading-6 text-muted-foreground flex-1">
-                Start with a 15-minute quick guidance call (₹500) to clarify which specialist or therapy fits best.
+                We will guide you to the right specialist. 15-minute guidance call — ₹500.
               </p>
               <div className="mt-8">
                 <Button
@@ -189,6 +189,7 @@ function HomePage() {
                 <h3 className="font-serif text-xl text-earth">{w.title}</h3>
                 <p className="mt-2 text-[11px] font-semibold uppercase tracking-widest text-primary">For {w.forWhom}</p>
                 <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground">{w.how}</p>
+                <p className="mt-4 text-xs text-muted-foreground">{w.modes}</p>
                 <span className="mt-6 inline-flex items-center text-sm font-medium text-earth">Book <ArrowRight className="ml-1 h-4 w-4" /></span>
               </button>
             ))}

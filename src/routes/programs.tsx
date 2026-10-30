@@ -44,6 +44,21 @@ const orgOfferings = [
   },
   {
     icon: Target,
+    title: "Smart Hiring",
+    desc: "Psychological people assessment to support better hiring and team-fit decisions.",
+  },
+  {
+    icon: Target,
+    title: "Business Growth Strategist",
+    desc: "Psychology-led strategy support for leaders focused on sustainable business growth.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Consumer Psychology",
+    desc: "Understanding customer behaviour and decision-making for business development.",
+  },
+  {
+    icon: Target,
     title: "Custom Programs",
     desc: "Bespoke interventions designed specifically around your industry, work culture, shift patterns, and team objectives.",
   },

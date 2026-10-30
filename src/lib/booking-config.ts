@@ -68,17 +68,22 @@ export type VisitMode = "clinic" | "home" | "online";
 
 export const visitModes: { id: VisitMode; label: string; hint: string }[] = [
   { id: "clinic", label: "Clinic / hospital visit", hint: "Meet at one of our Pune centres" },
-  { id: "home", label: "Home visit", hint: "Our specialist comes to you" },
+  { id: "home", label: "Home visit", hint: "Pune & PCMC — our specialist comes to you" },
   { id: "online", label: "Online consultation", hint: "Video call from anywhere" },
 ];
 
 export const wellnessServices = [
-  { title: "Psychotherapy", forWhom: "Adults, teens, couples", how: "Talk-based sessions to understand emotions, stress and patterns, and build healthier ways to cope." },
-  { title: "Occupational Therapy", forWhom: "Children & seniors", how: "Play and activity-based work on daily skills, focus, sensory needs and independence." },
-  { title: "Physiotherapy", forWhom: "Seniors, athletes, adults", how: "Guided movement and exercise to restore strength, mobility and comfort." },
-  { title: "Speech Therapy", forWhom: "Children & adults", how: "Structured exercises for speech clarity, language, communication and swallowing." },
-  { title: "Music Therapy", forWhom: "All ages", how: "Listening, rhythm and making music to express feelings and calm the mind." },
-  { title: "Dance & Movement Therapy", forWhom: "Children & adults", how: "Body movement used to release tension, build confidence and connect emotions." },
-  { title: "Expressive Art Therapy", forWhom: "Children & adults", how: "Drawing, painting and craft as a gentle way to say what is hard to put into words." },
-  { title: "Assessments", forWhom: "Children & adults", how: "Standardised evaluations (ADHD, autism, learning, IQ) that guide the right plan." },
+  { title: "Psychotherapy", forWhom: "Adults, teens, couples", how: "Talk-based sessions to understand emotions, stress and patterns, and build healthier ways to cope.", modes: "Hospital · Home · Online" },
+  { title: "Occupational Therapy", forWhom: "Children & seniors", how: "Play and activity-based work on daily skills, focus, sensory needs and independence.", modes: "Home · Online" },
+  { title: "Physiotherapy", forWhom: "Seniors, athletes, adults", how: "Guided movement and exercise to restore strength, mobility and comfort.", modes: "Home · Online" },
+  { title: "Speech Therapy", forWhom: "Children & adults", how: "Structured exercises for speech clarity, language, communication and swallowing.", modes: "Home · Online" },
+  { title: "Music Therapy", forWhom: "All ages", how: "Listening, rhythm and making music to express feelings and calm the mind.", modes: "Home · Online" },
+  { title: "Dance & Movement Therapy", forWhom: "Children & adults", how: "Body movement used to release tension, build confidence and connect emotions.", modes: "Home · Online" },
+  { title: "Expressive Art Therapy", forWhom: "Children & adults", how: "Drawing, painting and craft as a gentle way to say what is hard to put into words.", modes: "Home · Online" },
+  { title: "Assessments", forWhom: "Children & adults", how: "Standardised evaluations (ADHD, autism, learning, IQ) that guide the right plan.", modes: "Hospital · Home · Online" },
 ];
+
+/** Only psychologists, counsellors, psychotherapy and assessments are offered at hospitals; everything else is home (Pune & PCMC) or online. */
+export function modesForSpecialist(specialist: string): VisitMode[] {
+  return /psycholog|counsell|psychotherap|assess/i.test(specialist) ? ["clinic", "home", "online"] : ["home", "online"];
+}

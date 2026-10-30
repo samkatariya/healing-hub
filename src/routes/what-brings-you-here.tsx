@@ -72,11 +72,11 @@ function WhatBringsYouHerePage() {
           <div className="mt-24 border-t border-border/60 pt-16 flex flex-col md:flex-row md:items-start md:justify-between items-center text-center md:text-left gap-12">
             <div className="max-w-2xl flex flex-col items-center md:items-start">
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Unsure what to choose?
+                Guidance
               </span>
-              <h3 className="mt-4 font-serif text-3xl text-earth leading-[1.1]">That is completely okay.</h3>
+              <h3 className="mt-4 font-serif text-3xl text-earth leading-[1.1]">Request a call or message</h3>
               <p className="mt-4 text-base leading-7 text-muted-foreground">
-                You do not need to have everything figured out before reaching out. A quick call will guide you directly to the right professional.
+                We will guide you to the right specialist. 15-minute guidance call — ₹500.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-6 md:pt-10 shrink-0 items-center justify-center">

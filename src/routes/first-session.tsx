@@ -32,14 +32,14 @@ const steps = [
   },
   {
     num: "03",
-    title: "3. We guide",
-    desc: "We identify the most appropriate professional or therapeutic approach if specialized intervention is required.",
+    title: "3. We plan",
+    desc: "We agree on the right professional, format and frequency for you.",
     icon: Compass,
   },
   {
     num: "04",
-    title: "4. We plan",
-    desc: "We discuss the next step together—frequency, format, and what realistic progress will look like.",
+    title: "4. We work",
+    desc: "We work together session by session, reviewing progress as we go.",
     icon: CheckCircle2,
   },
 ];
