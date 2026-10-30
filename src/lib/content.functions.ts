@@ -4,20 +4,35 @@ import { z } from "zod";
 // Thin server functions: all storage details live behind the content
 // repository, so a different backend only needs a new repository.
 
+// Public content falls back to built-in site content so the website keeps
+// working if the database is unreachable or not yet configured (like
+// getHospitals below). The admin workspace still manages the live copy.
 export const getPublicContent = createServerFn({ method: "GET" }).handler(async () => {
-  const { createDrizzleContentRepository } = await import(
-    "@/lib/content/drizzle.repository.server"
-  );
-  return createDrizzleContentRepository().getPublicContent();
+  try {
+    const { createDrizzleContentRepository } = await import(
+      "@/lib/content/drizzle.repository.server"
+    );
+    return await createDrizzleContentRepository().getPublicContent();
+  } catch (error) {
+    console.error("getPublicContent failed, using built-in fallback content", error);
+    const { buildFallbackContent } = await import("@/lib/content/fallback-content");
+    return buildFallbackContent();
+  }
 });
 
 export const getPublicArticle = createServerFn({ method: "GET" })
   .inputValidator((input) => z.object({ slug: z.string().min(1).max(180) }).parse(input))
   .handler(async ({ data }) => {
-    const { createDrizzleContentRepository } = await import(
-      "@/lib/content/drizzle.repository.server"
-    );
-    return createDrizzleContentRepository().getPublicArticle(data.slug);
+    try {
+      const { createDrizzleContentRepository } = await import(
+        "@/lib/content/drizzle.repository.server"
+      );
+      return await createDrizzleContentRepository().getPublicArticle(data.slug);
+    } catch (error) {
+      console.error("getPublicArticle failed, trying built-in fallback content", error);
+      const { buildFallbackArticle } = await import("@/lib/content/fallback-content");
+      return buildFallbackArticle(data.slug);
+    }
   });
 
 // Hospitals fall back to the built-in list so the site still works if the
