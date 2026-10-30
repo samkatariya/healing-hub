@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { contact, ONLINE_BOOKING_URL } from "@/lib/site-data";
-import { NOT_SURE, modesForSpecialist, segments, visitModes, type SegmentId, type VisitMode } from "@/lib/booking-config";
+import { modesForSpecialist, segments, visitModes, type SegmentId, type VisitMode } from "@/lib/booking-config";
 import { hospitalsOptions } from "@/lib/content.queries";
 import { submitBookingRequest } from "@/lib/content.functions";
 import { HospitalMap } from "@/components/hospital-map";
