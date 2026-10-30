@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { contact, ONLINE_BOOKING_URL } from "@/lib/site-data";
-import { NOT_SURE, segments, visitModes, type SegmentId, type VisitMode } from "@/lib/booking-config";
+import { NOT_SURE, modesForSpecialist, segments, visitModes, type SegmentId, type VisitMode } from "@/lib/booking-config";
 import { hospitalsOptions } from "@/lib/content.queries";
 import { submitBookingRequest } from "@/lib/content.functions";
 import { HospitalMap } from "@/components/hospital-map";
@@ -50,7 +50,9 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [area, setArea] = useState("");
-  const [preferredTime, setPreferredTime] = useState("");
+  const [prefDate, setPrefDate] = useState("");
+  const [prefSlot, setPrefSlot] = useState("");
+  const preferredTime = [prefDate, prefSlot].filter(Boolean).join(", ");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
@@ -74,13 +76,14 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
 
   const segment = segments.find((s) => s.id === segmentId) ?? null;
   const hospital = hospitals.find((h) => h.slug === hospitalSlug) ?? null;
-  const modes = visitModes.filter((m) => m.id !== "home" || segment?.allowHomeVisit !== false);
+  const allowed = modesForSpecialist(specialist);
+  const modes = visitModes.filter((m) => allowed.includes(m.id));
 
   const close = () => {
     onOpenChange(false);
     setTimeout(() => {
       setStep(1); setSegmentId(null); setSpecialist(""); setMode(null); setHospitalSlug(null);
-      setName(""); setPhone(""); setArea(""); setPreferredTime(""); setError("");
+      setName(""); setPhone(""); setArea(""); setPrefDate(""); setPrefSlot(""); setError("");
     }, 200);
   };
 
@@ -168,13 +171,21 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
                   <p><strong>Our recommendation:</strong> {segment.recommendation}</p>
                 </div>
               )}
-              {[...segment.specialists, NOT_SURE].map((sp) => (
+              {segment.specialists.map((sp) => (
                 <button key={sp} type="button" className={optionCls(specialist === sp)}
                   onClick={() => { setSpecialist(sp); setStep(3); }}>
                   <span className="text-sm font-medium text-earth">{sp}</span>
                   <ArrowRight className="h-4 w-4 text-muted-foreground" />
                 </button>
               ))}
+              <div className="rounded-xl border border-border bg-sage-soft/40 p-4 text-sm">
+                <p className="font-semibold text-earth">Request a call or message</p>
+                <p className="mt-1 text-muted-foreground">We'll guide you to the right specialist. 15-minute guidance call — ₹500.</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Button asChild size="sm" className="rounded-full"><a href={`tel:${contact.phone}`}><Phone className="mr-1 h-3.5 w-3.5" />Call</a></Button>
+                  <Button asChild size="sm" variant="outline" className="rounded-full"><a href={contact.whatsapp} target="_blank" rel="noreferrer"><MessageCircle className="mr-1 h-3.5 w-3.5" />Message</a></Button>
+                </div>
+              </div>
               <Button variant="ghost" size="sm" onClick={() => setStep(1)}>Back</Button>
             </div>
           )}
@@ -235,7 +246,7 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
 
               {mode === "home" && (
                 <div>
-                  <Label htmlFor="book-area" className="text-xs font-semibold text-earth">Your area in Pune *</Label>
+                  <Label htmlFor="book-area" className="text-xs font-semibold text-earth">Your area (Pune & PCMC) *</Label>
                   <Input id="book-area" required maxLength={200} placeholder="e.g. Kothrud" value={area} onChange={(e) => setArea(e.target.value)} className="mt-1" />
                 </div>
               )}
@@ -250,9 +261,20 @@ export function BookingModal({ open, onOpenChange, defaultWho, defaultLocation }
                   <Input id="book-phone" required type="tel" pattern="[+0-9 ()\-]{7,20}" placeholder="+91 98765 43210" value={phone} onChange={(e) => setPhone(e.target.value)} className="mt-1" />
                 </div>
               </div>
-              <div>
-                <Label htmlFor="book-time" className="text-xs font-semibold text-earth">Preferred day / time</Label>
-                <Input id="book-time" maxLength={120} placeholder="e.g. Saturday morning" value={preferredTime} onChange={(e) => setPreferredTime(e.target.value)} className="mt-1" />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <Label htmlFor="book-date" className="text-xs font-semibold text-earth">Preferred day</Label>
+                  <Input id="book-date" type="date" min={new Date().toISOString().slice(0, 10)} value={prefDate} onChange={(e) => setPrefDate(e.target.value)} className="mt-1" />
+                </div>
+                <div>
+                  <Label htmlFor="book-slot" className="text-xs font-semibold text-earth">Preferred time</Label>
+                  <select id="book-slot" value={prefSlot} onChange={(e) => setPrefSlot(e.target.value)} className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3 text-sm">
+                    <option value="">Any time</option>
+                    <option>Morning (10 AM – 1 PM)</option>
+                    <option>Afternoon (1 PM – 4 PM)</option>
+                    <option>Evening (4 PM – 6 PM)</option>
+                  </select>
+                </div>
               </div>
               {error && <p className="text-sm text-destructive">{error}</p>}
               <div className="flex items-center justify-between">
