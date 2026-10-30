@@ -85,6 +85,9 @@ export const placeholderTestimonials: TestimonialItem[] = [
 ];
 
 /** Replace with the real online booking page (e.g. Calendly) when available. */
+/** Placeholder until confirmed calling hours are provided. */
+export const CALL_HOURS = "Mon–Sat, 10:00 AM – 6:00 PM";
+
 export const ONLINE_BOOKING_URL = "";
 
 
@@ -163,7 +166,7 @@ export const feeDetails = {
       fee: "₹2,000",
       onlineFee: "₹1,500",
       modes: "Hospital · Home · Online",
-      note: "Standard 50-minute psychotherapy or counselling session for adults, adolescents, or personal therapy.",
+      note: "Psychotherapy or counselling session. Save 25% online (₹1,500).",
     },
   ],
   assessments: [

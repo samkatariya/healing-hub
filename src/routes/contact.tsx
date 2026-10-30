@@ -3,7 +3,7 @@ import { MessageCircle, Phone, MapPin, CalendarCheck2, Video, Mail, ArrowRight }
 import { useState } from "react";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { contact, hospitalLocations } from "@/lib/site-data";
+import { CALL_HOURS, contact, hospitalLocations } from "@/lib/site-data";
 import { BookingModal } from "@/components/booking-modal";
 
 export const Route = createFileRoute("/contact")({
@@ -67,6 +67,18 @@ function ContactPage() {
                 </a>
               </Button>
               <Button asChild variant="outline" size="sm" className="mt-3 w-full rounded-full"><a href={`tel:${contact.phone}`}><Phone className="mr-1 h-3.5 w-3.5" />{contact.phoneDisplay}</a></Button>
+            </div>
+
+            {/* CALL US */}
+            <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between shadow-xs sm:col-span-2">
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-soft text-primary">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <h2 className="mt-4 font-serif text-2xl text-earth">Call us</h2>
+                <p className="mt-2 text-sm text-muted-foreground">{CALL_HOURS}</p>
+              </div>
+              <Button asChild className="mt-6 rounded-full w-full sm:w-auto sm:self-start"><a href={`tel:${contact.phone}`}><Phone className="mr-1.5 h-4 w-4" />{contact.phoneDisplay}</a></Button>
             </div>
 
             {/* 3. EMAIL */}
