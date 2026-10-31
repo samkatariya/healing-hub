@@ -81,7 +81,7 @@ function HomePage() {
           height={1152}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/35 to-neutral-900/5" />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/35 via-transparent to-transparent h-48" />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/50 via-transparent to-transparent h-48" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-40 text-primary-foreground lg:px-8 lg:pb-32">
           <div className="max-w-3xl text-center sm:text-left mx-auto sm:mx-0 mt-4">
             <h1 className="font-serif text-5xl leading-[1.08] sm:text-6xl lg:text-7xl font-semibold text-balance mx-auto sm:mx-0 text-white drop-shadow-md">
